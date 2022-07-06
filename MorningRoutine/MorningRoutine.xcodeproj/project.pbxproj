@@ -15,6 +15,7 @@
 		E929741C28749CCB00A1EF0E /* MorningRoutineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929741B28749CCB00A1EF0E /* MorningRoutineUITestsLaunchTests.swift */; };
 		E929742A28749D2E00A1EF0E /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742928749D2E00A1EF0E /* ListView.swift */; };
 		E929742C28749FC200A1EF0E /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742B28749FC200A1EF0E /* ListRowView.swift */; };
+		E929742F2876443800A1EF0E /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742E2876443800A1EF0E /* ItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		E929741B28749CCB00A1EF0E /* MorningRoutineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRoutineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E929742928749D2E00A1EF0E /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		E929742B28749FC200A1EF0E /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		E929742E2876443800A1EF0E /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		E92973FD28749CCA00A1EF0E /* MorningRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				E929742D2876442B00A1EF0E /* Models */,
 				E929742828749D1E00A1EF0E /* Views */,
 				E92973FE28749CCA00A1EF0E /* MorningRoutineApp.swift */,
 				E929740228749CCB00A1EF0E /* Assets.xcassets */,
@@ -136,6 +139,14 @@
 				E929742B28749FC200A1EF0E /* ListRowView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E929742D2876442B00A1EF0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E929742E2876443800A1EF0E /* ItemModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			files = (
 				E92973FF28749CCA00A1EF0E /* MorningRoutineApp.swift in Sources */,
 				E929742A28749D2E00A1EF0E /* ListView.swift in Sources */,
+				E929742F2876443800A1EF0E /* ItemModel.swift in Sources */,
 				E929742C28749FC200A1EF0E /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
