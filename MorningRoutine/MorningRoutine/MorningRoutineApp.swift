@@ -12,7 +12,7 @@ struct MorningRoutineApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ListView()
+                ListView(type: .actn)
             }
         }
     }

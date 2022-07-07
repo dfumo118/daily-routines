@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ListView: View {
+    @State var type : Item
     @State var items : [ItemModel] = [
         ItemModel(title: "Hi", time: 120),
         ItemModel(title: "Hello", time: 150),
         ItemModel(title: "Hey there", time: 100)
     ]
-    @State var title : String = "Actions"
     
     var body: some View {
         List {
@@ -22,10 +22,17 @@ struct ListView: View {
             }
         }
         .listStyle(PlainListStyle())
-        .navigationTitle(title)
+        .navigationTitle(
+            "\(type.rawValue.capitalized)s"
+        )
         .navigationBarItems (
             leading: EditButton(),
-            trailing: Label("Add", systemImage: "plus")
+            trailing: NavigationLink(
+                destination: Text("Add"),
+                label: {
+                    Label("Add", systemImage: "plus")
+                }
+            )
         )
     }
 }
@@ -33,7 +40,7 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ListView()
+            ListView(type: .actn)
         }
     }
 }
