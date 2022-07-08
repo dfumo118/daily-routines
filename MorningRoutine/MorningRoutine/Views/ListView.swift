@@ -29,7 +29,7 @@ struct ListView: View {
             leading: EditButton(),
             trailing: NavigationLink(
                 destination: type == .actn ?
-                    AnyView(AddActionView())  : AnyView(Text("hi")),
+                    AnyView(AddActionView())  : AnyView(AddRoutineView()),
                 label: {
                     Label("Add", systemImage: "plus")
                 }
