@@ -11,5 +11,5 @@ struct RoutineModel : Identifiable, Codable {
     let id : String = UUID().uuidString
     let title : String
     let time : Int = 0
-    let actions : [ItemModel] = []
+    let actions : [ActionModel] = []
 }

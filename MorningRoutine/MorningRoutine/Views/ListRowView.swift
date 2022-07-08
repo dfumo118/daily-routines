@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListRowView: View {
-    @State var item : ItemModel
+    @State var item : ActionModel
     
     var body: some View {
         HStack {
@@ -21,6 +21,6 @@ struct ListRowView: View {
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView(item: ItemModel(title:"Hi", time: 300))
+        ListRowView(item: ActionModel(title:"Hi", time: 300))
     }
 }

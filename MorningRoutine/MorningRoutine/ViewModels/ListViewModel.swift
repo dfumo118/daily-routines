@@ -8,31 +8,31 @@
 import Foundation
 
 class ListViewModel : ObservableObject {
-    @Published var items : [ItemModel] = []
+    @Published var actions : [ActionModel] = []
     
     init() {
-        getItems()
+        getActions()
     }
     
-    func getItems() {
-        let newItems = [
-            ItemModel(title: "Hi", time: 120),
-            ItemModel(title: "Hello", time: 150),
-            ItemModel(title: "Hey there", time: 100)
+    func getActions() {
+        let newActions = [
+            ActionModel(title: "Hi", time: 120),
+            ActionModel(title: "Hello", time: 150),
+            ActionModel(title: "Hey there", time: 100)
         ]
-        items.append(contentsOf: newItems)
+        actions.append(contentsOf: newActions)
     }
     
-    func deleteItem(indexSet: IndexSet) {
-        items.remove(atOffsets: indexSet)
+    func deleteAction(indexSet: IndexSet) {
+        actions.remove(atOffsets: indexSet)
     }
     
-    func moveItem(from: IndexSet, to: Int) {
-        items.move(fromOffsets: from, toOffset: to)
+    func moveAction(from: IndexSet, to: Int) {
+        actions.move(fromOffsets: from, toOffset: to)
     }
     
-    func addItem(title: String, time: Int) {
-        let newItem = ItemModel(title: title, time: time)
-        items.append(newItem)
+    func addAction(title: String, time: Int) {
+        let newAction = ActionModel(title: title, time: time)
+        actions.append(newAction)
     }
 }

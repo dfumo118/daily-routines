@@ -75,7 +75,7 @@ struct AddActionView: View {
     }
     
     func buttonPressed() {
-        listViewModel.addItem(
+        listViewModel.addAction(
             title: titleText,
             time: minutes * 60 + seconds
         )

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ItemModel : Identifiable, Codable {
+struct ActionModel : Identifiable, Codable {
     let id : String = UUID().uuidString
     let title: String
     let time: Int // time in seconds

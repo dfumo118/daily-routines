@@ -14,11 +14,11 @@ struct ListView: View {
     
     var body: some View {
         List {
-            ForEach(listViewModel.items) { item in
+            ForEach(listViewModel.actions) { item in
                 ListRowView(item: item)
             }
-            .onDelete(perform: listViewModel.deleteItem)
-            .onMove(perform: listViewModel.moveItem)
+            .onDelete(perform: listViewModel.deleteAction)
+            .onMove(perform: listViewModel.moveAction)
         }
         .listStyle(PlainListStyle())
         .navigationTitle(
