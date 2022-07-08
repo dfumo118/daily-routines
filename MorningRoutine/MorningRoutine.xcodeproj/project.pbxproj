@@ -18,6 +18,7 @@
 		E929742F2876443800A1EF0E /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742E2876443800A1EF0E /* ItemModel.swift */; };
 		E929743128765D9300A1EF0E /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743028765D9300A1EF0E /* AddActionView.swift */; };
 		E9297435287867A900A1EF0E /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9297434287867A900A1EF0E /* AddRoutineView.swift */; };
+		E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743628786C0800A1EF0E /* RoutineModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E929742E2876443800A1EF0E /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		E929743028765D9300A1EF0E /* AddActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
 		E9297434287867A900A1EF0E /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
+		E929743628786C0800A1EF0E /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				E929742E2876443800A1EF0E /* ItemModel.swift */,
+				E929743628786C0800A1EF0E /* RoutineModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				E9297435287867A900A1EF0E /* AddRoutineView.swift in Sources */,
 				E929742A28749D2E00A1EF0E /* ListView.swift in Sources */,
 				E929743128765D9300A1EF0E /* AddActionView.swift in Sources */,
+				E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */,
 				E929742F2876443800A1EF0E /* ItemModel.swift in Sources */,
 				E929742C28749FC200A1EF0E /* ListRowView.swift in Sources */,
 			);

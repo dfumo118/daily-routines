@@ -2,19 +2,14 @@
 //  RoutineModel.swift
 //  MorningRoutine
 //
-//  Created by David Fumagalli on 7/7/22.
+//  Created by David Fumagalli on 7/8/22.
 //
 
 import Foundation
 
-class RoutineModel : ItemModel {
-    let actions : [ItemModel]
-    
-    init() {
-        actions = []
-    }
-    
-    required init(from decoder: Decoder) throws {
-        super.init(from: decoder)
-    }
+struct RoutineModel : Identifiable, Codable {
+    let id : String = UUID().uuidString
+    let title : String
+    let time : Int = 0
+    let actions : [ItemModel] = []
 }
