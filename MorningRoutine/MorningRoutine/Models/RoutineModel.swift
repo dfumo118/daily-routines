@@ -7,9 +7,15 @@
 
 import Foundation
 
-struct RoutineModel : Identifiable, Codable {
-    let id : String = UUID().uuidString
-    let title : String
-    let time : Int = 0
-    let actions : [ActionModel] = []
+class RoutineModel : ActionModel {
+    let actions : [ActionModel]
+    
+    override init(title: String, time: Int) {
+        self.actions = []
+        super.init(title: title, time: time)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }
