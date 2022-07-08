@@ -18,7 +18,7 @@ struct ListView: View {
     var body: some View {
         List {
             ForEach(items) { item in
-                ListRowView(text: item.title, time: item.timeAsString())
+                ListRowView(item: item)
             }
         }
         .listStyle(PlainListStyle())
@@ -28,7 +28,8 @@ struct ListView: View {
         .navigationBarItems (
             leading: EditButton(),
             trailing: NavigationLink(
-                destination: Text("Add"),
+                destination: type == .actn ?
+                    AnyView(AddActionView())  : AnyView(Text("hi")),
                 label: {
                     Label("Add", systemImage: "plus")
                 }

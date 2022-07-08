@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct ListRowView: View {
-    @State var text : String
-    @State var time : String
+    @State var item : ItemModel
     
     var body: some View {
         HStack {
-            Text(text)
+            Text(item.title)
             Spacer()
-            Text(time)
+            Text(item.timeAsString())
         }
     }
 }
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView(text:"Hi", time: "5:00")
+        ListRowView(item: ItemModel(title:"Hi", time: 300))
     }
 }
