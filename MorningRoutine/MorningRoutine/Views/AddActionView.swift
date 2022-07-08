@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddActionView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var listViewModel : ListViewModel
     @State var titleText : String = ""
     @State var timeText : String = ""
     
@@ -34,12 +36,19 @@ struct AddActionView: View {
                 .cornerRadius(10)
                 .foregroundColor(Color.white)
                 .onTapGesture {
-                    //
+                    buttonPressed()
                 }
             Spacer()
         }
         .padding(20)
         .navigationTitle("Add Action")
+    }
+    
+    func buttonPressed() {
+        if Int(timeText) ?? -1 > 0 {
+            listViewModel.addItem(title: titleText, time: Int(timeText) ?? 0)
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

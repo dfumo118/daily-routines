@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @EnvironmentObject var listViewModel: ListViewModel
     @State var type : Item
-    @State var items : [ItemModel] = [
-        ItemModel(title: "Hi", time: 120),
-        ItemModel(title: "Hello", time: 150),
-        ItemModel(title: "Hey there", time: 100)
-    ]
     
     var body: some View {
         List {
-            ForEach(items) { item in
+            ForEach(listViewModel.items) { item in
                 ListRowView(item: item)
             }
+            .onDelete(perform: listViewModel.deleteItem)
+            .onMove(perform: listViewModel.moveItem)
         }
         .listStyle(PlainListStyle())
         .navigationTitle(
@@ -43,5 +42,6 @@ struct ListView_Previews: PreviewProvider {
         NavigationView {
             ListView(type: .actn)
         }
+        .environmentObject(ListViewModel())
     }
 }

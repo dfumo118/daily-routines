@@ -19,6 +19,7 @@
 		E929743128765D9300A1EF0E /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743028765D9300A1EF0E /* AddActionView.swift */; };
 		E9297435287867A900A1EF0E /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9297434287867A900A1EF0E /* AddRoutineView.swift */; };
 		E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743628786C0800A1EF0E /* RoutineModel.swift */; };
+		E929743A2878705800A1EF0E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92974392878705800A1EF0E /* ListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		E929743028765D9300A1EF0E /* AddActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
 		E9297434287867A900A1EF0E /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
 		E929743628786C0800A1EF0E /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
+		E92974392878705800A1EF0E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		E92973FD28749CCA00A1EF0E /* MorningRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				E92974382878703500A1EF0E /* ViewModels */,
 				E929742D2876442B00A1EF0E /* Models */,
 				E929742828749D1E00A1EF0E /* Views */,
 				E92973FE28749CCA00A1EF0E /* MorningRoutineApp.swift */,
@@ -156,6 +159,14 @@
 				E929743628786C0800A1EF0E /* RoutineModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E92974382878703500A1EF0E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E92974392878705800A1EF0E /* ListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +305,7 @@
 				E929743128765D9300A1EF0E /* AddActionView.swift in Sources */,
 				E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */,
 				E929742F2876443800A1EF0E /* ItemModel.swift in Sources */,
+				E929743A2878705800A1EF0E /* ListViewModel.swift in Sources */,
 				E929742C28749FC200A1EF0E /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
