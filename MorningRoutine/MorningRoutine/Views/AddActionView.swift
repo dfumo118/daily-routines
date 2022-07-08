@@ -11,7 +11,8 @@ struct AddActionView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel : ListViewModel
     @State var titleText : String = ""
-    @State var timeText : String = ""
+    @State var minutes : Int = 0
+    @State var seconds : Int = 0
     
     var body: some View {
         VStack {
@@ -22,13 +23,41 @@ struct AddActionView: View {
                     Color(UIColor.secondarySystemBackground)
                 )
                 .cornerRadius(10)
-            TextField("Text", text: $timeText)
-                .padding()
-                .padding(.horizontal)
-                .background(
-                    Color(UIColor.secondarySystemBackground)
-                )
-                .cornerRadius(10)
+            HStack {
+                VStack {
+                    Text("Minutes")
+                        .padding(.vertical, 2)
+                    Picker(selection: $minutes, label: Text("Minutes")) {
+                        ForEach(0..<60, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .frame(minWidth:0)
+                    .clipped()
+                    .background(
+                        Color(UIColor.secondarySystemBackground)
+                    )
+                    .cornerRadius(10)
+                }
+                VStack {
+                    Text("Seconds")
+                        .padding(.vertical, 2)
+                    Picker(selection: $seconds, label: Text("Seconds")) {
+                        ForEach(0..<60, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .frame(minWidth:0)
+                    .clipped()
+                    .background(
+                        Color(UIColor.secondarySystemBackground)
+                    )
+                    .cornerRadius(10)
+                }
+            }
+            .padding(.vertical, 10)
             Text("Add")
                 .padding()
                 .padding(.horizontal, 20)
@@ -38,6 +67,7 @@ struct AddActionView: View {
                 .onTapGesture {
                     buttonPressed()
                 }
+                .padding()
             Spacer()
         }
         .padding(20)
@@ -45,10 +75,11 @@ struct AddActionView: View {
     }
     
     func buttonPressed() {
-        if Int(timeText) ?? -1 > 0 {
-            listViewModel.addItem(title: titleText, time: Int(timeText) ?? 0)
-            presentationMode.wrappedValue.dismiss()
-        }
+        listViewModel.addItem(
+            title: titleText,
+            time: minutes * 60 + seconds
+        )
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
