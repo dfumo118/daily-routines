@@ -13,13 +13,13 @@
 		E929741028749CCB00A1EF0E /* MorningRoutineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929740F28749CCB00A1EF0E /* MorningRoutineTests.swift */; };
 		E929741A28749CCB00A1EF0E /* MorningRoutineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929741928749CCB00A1EF0E /* MorningRoutineUITests.swift */; };
 		E929741C28749CCB00A1EF0E /* MorningRoutineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929741B28749CCB00A1EF0E /* MorningRoutineUITestsLaunchTests.swift */; };
-		E929742A28749D2E00A1EF0E /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742928749D2E00A1EF0E /* ListView.swift */; };
-		E929742C28749FC200A1EF0E /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742B28749FC200A1EF0E /* ListRowView.swift */; };
+		E929742A28749D2E00A1EF0E /* ActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742928749D2E00A1EF0E /* ActionListView.swift */; };
+		E929742C28749FC200A1EF0E /* ActionListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742B28749FC200A1EF0E /* ActionListRowView.swift */; };
 		E929742F2876443800A1EF0E /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929742E2876443800A1EF0E /* ActionModel.swift */; };
 		E929743128765D9300A1EF0E /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743028765D9300A1EF0E /* AddActionView.swift */; };
 		E9297435287867A900A1EF0E /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9297434287867A900A1EF0E /* AddRoutineView.swift */; };
 		E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743628786C0800A1EF0E /* RoutineModel.swift */; };
-		E929743A2878705800A1EF0E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92974392878705800A1EF0E /* ListViewModel.swift */; };
+		E929743A2878705800A1EF0E /* ActionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92974392878705800A1EF0E /* ActionListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,13 +49,13 @@
 		E929741528749CCB00A1EF0E /* MorningRoutineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorningRoutineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E929741928749CCB00A1EF0E /* MorningRoutineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRoutineUITests.swift; sourceTree = "<group>"; };
 		E929741B28749CCB00A1EF0E /* MorningRoutineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRoutineUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E929742928749D2E00A1EF0E /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		E929742B28749FC200A1EF0E /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		E929742928749D2E00A1EF0E /* ActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionListView.swift; sourceTree = "<group>"; };
+		E929742B28749FC200A1EF0E /* ActionListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionListRowView.swift; sourceTree = "<group>"; };
 		E929742E2876443800A1EF0E /* ActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
 		E929743028765D9300A1EF0E /* AddActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
 		E9297434287867A900A1EF0E /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
 		E929743628786C0800A1EF0E /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
-		E92974392878705800A1EF0E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		E92974392878705800A1EF0E /* ActionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +144,8 @@
 		E929742828749D1E00A1EF0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E929742928749D2E00A1EF0E /* ListView.swift */,
-				E929742B28749FC200A1EF0E /* ListRowView.swift */,
+				E929742928749D2E00A1EF0E /* ActionListView.swift */,
+				E929742B28749FC200A1EF0E /* ActionListRowView.swift */,
 				E929743028765D9300A1EF0E /* AddActionView.swift */,
 				E9297434287867A900A1EF0E /* AddRoutineView.swift */,
 			);
@@ -164,7 +164,7 @@
 		E92974382878703500A1EF0E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E92974392878705800A1EF0E /* ListViewModel.swift */,
+				E92974392878705800A1EF0E /* ActionListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -301,12 +301,12 @@
 			files = (
 				E92973FF28749CCA00A1EF0E /* MorningRoutineApp.swift in Sources */,
 				E9297435287867A900A1EF0E /* AddRoutineView.swift in Sources */,
-				E929742A28749D2E00A1EF0E /* ListView.swift in Sources */,
+				E929742A28749D2E00A1EF0E /* ActionListView.swift in Sources */,
 				E929743128765D9300A1EF0E /* AddActionView.swift in Sources */,
 				E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */,
 				E929742F2876443800A1EF0E /* ActionModel.swift in Sources */,
-				E929743A2878705800A1EF0E /* ListViewModel.swift in Sources */,
-				E929742C28749FC200A1EF0E /* ListRowView.swift in Sources */,
+				E929743A2878705800A1EF0E /* ActionListViewModel.swift in Sources */,
+				E929742C28749FC200A1EF0E /* ActionListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

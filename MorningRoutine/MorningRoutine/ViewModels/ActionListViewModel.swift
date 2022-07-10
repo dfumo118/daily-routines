@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ListViewModel : ObservableObject {
+class ActionListViewModel : ObservableObject {
     @Published var actions : [ActionModel] = []
     
     init() {

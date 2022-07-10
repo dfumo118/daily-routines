@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddActionView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var listViewModel : ListViewModel
+    @EnvironmentObject var actionListViewModel : ActionListViewModel
     @State var titleText : String = ""
     @State var minutes : Int = 0
     @State var seconds : Int = 0
@@ -75,7 +75,7 @@ struct AddActionView: View {
     }
     
     func buttonPressed() {
-        listViewModel.addAction(
+        actionListViewModel.addAction(
             title: titleText,
             time: minutes * 60 + seconds
         )

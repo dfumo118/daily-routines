@@ -10,14 +10,14 @@ import SwiftUI
 @main
 struct MorningRoutineApp: App {
     
-    @StateObject var listViewModel : ListViewModel = ListViewModel()
+    @StateObject var actionListViewModel : ActionListViewModel = ActionListViewModel()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ListView(type: .actn)
+                ActionListView()
             }
-            .environmentObject(listViewModel)
+            .environmentObject(actionListViewModel)
         }
     }
 }
