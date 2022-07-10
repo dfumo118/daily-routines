@@ -7,15 +7,16 @@
 
 import Foundation
 
-class RoutineModel : ActionModel {
+struct RoutineModel : Identifiable, Codable {
+    let id: String = UUID().uuidString
+    let name: String
+    let time: Int = 0
     let actions : [ActionModel]
     
-    override init(title: String, time: Int) {
-        self.actions = []
-        super.init(title: title, time: time)
-    }
-    
-    required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+    func timeAsString() -> String {
+        let minutes = time / 60
+        let seconds = time % 60
+        
+        return String(format: "%d:%02d", minutes, seconds)
     }
 }

@@ -7,16 +7,10 @@
 
 import Foundation
 
-class ActionModel : Identifiable, Codable {
-    let id : String
+struct ActionModel : Identifiable, Codable {
+    let id : String = UUID().uuidString
     let title : String
     let time : Int
-    
-    init(title: String, time: Int) {
-        self.title = title
-        self.time = time
-        self.id = UUID().uuidString
-    }
     
     func timeAsString() -> String {
         let minutes = time / 60
