@@ -12,26 +12,28 @@ struct ActionListView: View {
     @EnvironmentObject var actionListViewModel: ActionListViewModel
     
     var body: some View {
-        List {
-            ForEach(actionListViewModel.actions) { action in
-                ActionListRowView(action: action)
-            }
-            .onDelete(perform: actionListViewModel.deleteAction)
-            .onMove(perform: actionListViewModel.moveAction)
-        }
-        .listStyle(PlainListStyle())
-        .navigationTitle(
-            "Actions"
-        )
-        .navigationBarItems (
-            leading: EditButton(),
-            trailing: NavigationLink(
-                destination: AddActionView(),
-                label: {
-                    Label("Add", systemImage: "plus")
+        ZStack {
+            List {
+                ForEach(actionListViewModel.actions) { action in
+                    ActionListRowView(action: action)
                 }
+                .onDelete(perform: actionListViewModel.deleteAction)
+                .onMove(perform: actionListViewModel.moveAction)
+            }
+            .listStyle(.plain)
+            .navigationTitle(
+                "Actions"
             )
-        )
+            .navigationBarItems (
+                leading: EditButton(),
+                trailing: NavigationLink(
+                    destination: AddActionView(),
+                    label: {
+                        Label("Add", systemImage: "plus")
+                    }
+                )
+            )
+        }
     }
 }
 
