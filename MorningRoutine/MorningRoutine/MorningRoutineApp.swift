@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct MorningRoutineApp: App {
     
+    @StateObject var routineListViewModel : RoutineListViewModel = RoutineListViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -19,6 +21,7 @@ struct MorningRoutineApp: App {
                     ActionModel(title: "Hey there", time: 100)
                 ]))
             }
+            .environmentObject(routineListViewModel)
         }
     }
 }

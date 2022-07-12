@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddRoutineView: View {
     @State var titleText : String = ""
+    @State var selectedColor : Color = .red
     
     var body: some View {
         ScrollView {
@@ -19,6 +20,8 @@ struct AddRoutineView: View {
                     Color(UIColor.secondarySystemBackground)
                 )
                 .cornerRadius(10)
+            ColorPicker("Change Routine Color", selection: $selectedColor)
+                .padding()
         }
         .padding()
         .navigationTitle("Create Routine")

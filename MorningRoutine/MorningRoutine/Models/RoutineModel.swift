@@ -10,6 +10,7 @@ import Foundation
 struct RoutineModel : Identifiable, Codable {
     let id: String = UUID().uuidString
     let name: String
+    var color: [Double] = [255, 0, 0]
     var time: Int = 0
     var actions : [ActionModel]
     
