@@ -9,8 +9,8 @@ import Foundation
 
 struct ActionModel : Identifiable, Codable {
     let id : String = UUID().uuidString
-    let title : String
-    let time : Int
+    var title : String
+    var time : Int
     
     func timeAsString() -> String {
         let minutes = time / 60
@@ -18,9 +18,4 @@ struct ActionModel : Identifiable, Codable {
         
         return String(format: "%d:%02d", minutes, seconds)
     }
-}
-
-enum Item : String {
-    case routine = "routine"
-    case actn = "action"
 }

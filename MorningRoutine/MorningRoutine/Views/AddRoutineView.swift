@@ -19,14 +19,13 @@ struct AddRoutineView: View {
                     Color(UIColor.secondarySystemBackground)
                 )
                 .cornerRadius(10)
-            // ListView(type: .actn)
         }
         .padding()
         .navigationTitle("Create Routine")
         .navigationBarItems (
             trailing: (
                 NavigationLink(
-                    destination: AddActionView(),
+                    destination: Text("Add"), //AddActionView(actionListViewModel: nil),
                     label: {
                         Text("Add Action")
                     })

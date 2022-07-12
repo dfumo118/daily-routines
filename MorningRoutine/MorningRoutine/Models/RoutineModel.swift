@@ -10,8 +10,8 @@ import Foundation
 struct RoutineModel : Identifiable, Codable {
     let id: String = UUID().uuidString
     let name: String
-    let time: Int = 0
-    let actions : [ActionModel]
+    var time: Int = 0
+    var actions : [ActionModel]
     
     func timeAsString() -> String {
         let minutes = time / 60

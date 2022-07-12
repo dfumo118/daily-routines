@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddActionView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var actionListViewModel : ActionListViewModel
+    @StateObject var actionListViewModel : ActionListViewModel
     @State var titleText : String = ""
     @State var minutes : Int = 0
     @State var seconds : Int = 0
@@ -86,7 +86,7 @@ struct AddActionView: View {
 struct AddActionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddActionView()
+            AddActionView(actionListViewModel: ActionListViewModel(routine:RoutineModel(name:"hi", actions:[])))
         }
     }
 }

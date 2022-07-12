@@ -8,31 +8,27 @@
 import Foundation
 
 class ActionListViewModel : ObservableObject {
-    @Published var actions : [ActionModel] = []
+    @Published var routine : RoutineModel
     
-    init() {
-        getActions()
-    }
-    
-    func getActions() {
-        let newActions = [
-            ActionModel(title: "Hi", time: 120),
-            ActionModel(title: "Hello", time: 150),
-            ActionModel(title: "Hey there", time: 100)
-        ]
-        actions.append(contentsOf: newActions)
+    init(routine: RoutineModel) {
+        self.routine = routine
     }
     
     func deleteAction(indexSet: IndexSet) {
-        actions.remove(atOffsets: indexSet)
+        routine.actions.remove(atOffsets: indexSet)
     }
     
     func moveAction(from: IndexSet, to: Int) {
-        actions.move(fromOffsets: from, toOffset: to)
+        routine.actions.move(fromOffsets: from, toOffset: to)
     }
     
     func addAction(title: String, time: Int) {
         let newAction = ActionModel(title: title, time: time)
-        actions.append(newAction)
+        routine.actions.append(newAction)
+    }
+    
+    func replaceAction(old: Int, new: ActionModel) {
+        routine.actions.remove(at: old)
+        routine.actions.insert(new, at: old)
     }
 }

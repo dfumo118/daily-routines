@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ActionListRowView: View {
+  
     @State var action : ActionModel
     @State var editing : Bool = false
     @State var titleText : String = ""
@@ -69,7 +70,7 @@ struct ActionListRowView: View {
         .padding(20)
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(10)
-        .padding()
+        .padding(.horizontal)
         .onTapGesture {
             if !editing {
                 withAnimation(.spring()) {
