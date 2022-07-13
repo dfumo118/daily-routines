@@ -15,11 +15,7 @@ struct MorningRoutineApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ActionListView(routine: RoutineModel(name: "Routine", actions: [
-                    ActionModel(title: "Hi", time: 120),
-                    ActionModel(title: "Hello", time: 150),
-                    ActionModel(title: "Hey there", time: 100)
-                ]))
+                RoutineListView()
             }
             .environmentObject(routineListViewModel)
         }

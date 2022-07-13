@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AddRoutineView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var routineListViewModel : RoutineListViewModel
+    
     @State var titleText : String = ""
     @State var selectedColor : Color = .red
     
@@ -20,8 +24,18 @@ struct AddRoutineView: View {
                     Color(UIColor.secondarySystemBackground)
                 )
                 .cornerRadius(10)
-            ColorPicker("Change Routine Color", selection: $selectedColor)
+            ColorPicker("Change Routine Color", selection: $selectedColor, supportsOpacity: false)
                 .padding()
+            Text("Save")
+                .padding()
+                .padding(.horizontal)
+                .background(Color.accentColor)
+                .cornerRadius(10)
+                .foregroundColor(.white)
+                .onTapGesture {
+                    routineListViewModel.addRoutine(name: titleText, color: UIColor(selectedColor))
+                    presentationMode.wrappedValue.dismiss()
+                }
         }
         .padding()
         .navigationTitle("Create Routine")
@@ -42,5 +56,6 @@ struct AddRoutineView_Previews: PreviewProvider {
         NavigationView {
             AddRoutineView()
         }
+        .environmentObject(RoutineListViewModel())
     }
 }

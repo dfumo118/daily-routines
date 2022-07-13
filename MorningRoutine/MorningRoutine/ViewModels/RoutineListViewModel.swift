@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class RoutineListViewModel : ObservableObject {
     @Published var routines : [RoutineModel]
@@ -38,8 +39,14 @@ class RoutineListViewModel : ObservableObject {
         routines.move(fromOffsets: from, toOffset: to)
     }
     
-    func addRoutine(name: String) {
-        let newRoutine = RoutineModel(name: name, actions: [])
+    func addRoutine(name: String, color: UIColor) {
+        var r : CGFloat = 0
+        var g : CGFloat = 0
+        var b : CGFloat = 0
+        var a : CGFloat = 0
+        guard color.getRed(&r, green: &g, blue: &b, alpha: &a) else {return}
+        let newRoutine = RoutineModel(name: name, color:[r,g,b], actions: [])
+                
         routines.append(newRoutine)
     }
 }
