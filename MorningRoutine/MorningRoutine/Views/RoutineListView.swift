@@ -34,6 +34,10 @@ struct RoutineListView: View {
                     }
                 )
             )
+            
+            if routineListViewModel.routines.isEmpty {
+                Text("Empty!")
+            }
         }
         
     }
