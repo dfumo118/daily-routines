@@ -13,31 +13,35 @@ struct RoutineListView: View {
     
     var body: some View {
        
-        ZStack {
-            List {
-                ForEach(routineListViewModel.routines) {
-                    RoutineListRowView(routine: $0)
-                }
-                .onDelete(perform: routineListViewModel.deleteRoutine)
-                .onMove(perform: routineListViewModel.moveRoutine)
-            }
-            .listStyle(.plain)
-            .navigationTitle(
-                "Routines"
-            )
-            .navigationBarItems (
-                leading: EditButton(),
-                trailing: NavigationLink(
-                    destination: AddRoutineView(),
-                    label: {
-                        Label("Add", systemImage: "plus")
+        ScrollView {
+            ZStack {
+                List {
+                    ForEach(routineListViewModel.routines) {
+                        RoutineListRowView(routine: $0)
                     }
+                    .onDelete(perform: routineListViewModel.deleteRoutine)
+                    .onMove(perform: routineListViewModel.moveRoutine)
+                }
+                .listStyle(.plain)
+                .navigationTitle(
+                    "Routines"
                 )
-            )
-            
-            if routineListViewModel.routines.isEmpty {
-                Text("Empty!")
+                .navigationBarItems (
+                    leading: EditButton(),
+                    trailing: NavigationLink(
+                        destination: AddRoutineView(),
+                        label: {
+                            Label("Add", systemImage: "plus")
+                        }
+                    )
+                )
+                
+                if routineListViewModel.routines.isEmpty {
+                    EmptyRoutineListView()
+                        .padding(50)
+                }
             }
+            Spacer()
         }
         
     }

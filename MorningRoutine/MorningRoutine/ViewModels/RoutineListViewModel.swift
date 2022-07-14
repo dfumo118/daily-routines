@@ -12,23 +12,23 @@ class RoutineListViewModel : ObservableObject {
     @Published var routines : [RoutineModel]
     
     init() {
-        self.routines = [
-            RoutineModel(name: "Routine 1", actions: [
-                ActionModel(title: "Hi", time: 120),
-                ActionModel(title: "Hello", time: 150),
-                ActionModel(title: "Hey there", time: 100)
-            ]),
-            RoutineModel(name: "Routine 2", actions: [
-                ActionModel(title: "Hi", time: 120),
-                ActionModel(title: "Hello", time: 150),
-                ActionModel(title: "Hey there", time: 100)
-            ]),
-            RoutineModel(name: "Routine 3", actions: [
-                ActionModel(title: "Hi", time: 120),
-                ActionModel(title: "Hello", time: 150),
-                ActionModel(title: "Hey there", time: 100)
-            ])
-        ]
+        self.routines = []
+//            RoutineModel(name: "Routine 1", actions: [
+//                ActionModel(title: "Hi", time: 120),
+//                ActionModel(title: "Hello", time: 150),
+//                ActionModel(title: "Hey there", time: 100)
+//            ]),
+//            RoutineModel(name: "Routine 2", actions: [
+//                ActionModel(title: "Hi", time: 120),
+//                ActionModel(title: "Hello", time: 150),
+//                ActionModel(title: "Hey there", time: 100)
+//            ]),
+//            RoutineModel(name: "Routine 3", actions: [
+//                ActionModel(title: "Hi", time: 120),
+//                ActionModel(title: "Hello", time: 150),
+//                ActionModel(title: "Hey there", time: 100)
+//            ])
+//        ]
     }
     
     func deleteRoutine(indexSet: IndexSet) {
