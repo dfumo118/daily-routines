@@ -78,6 +78,8 @@ struct RoutineInteractView: View {
                         }
                     }
             }
+            TimerView(time: routine.actions[num].time)
+                .opacity(tap ? 0 : 1)
         }
     }
 }
