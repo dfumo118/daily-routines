@@ -13,7 +13,7 @@ struct RoutineListView: View {
     
     var body: some View {
        
-        ScrollView {
+        VStack {
             ZStack {
                 List {
                     ForEach(routineListViewModel.routines) {
@@ -38,10 +38,9 @@ struct RoutineListView: View {
                 
                 if routineListViewModel.routines.isEmpty {
                     EmptyRoutineListView()
-                        .padding(50)
+                        .padding(.bottom, 150)
                 }
             }
-            Spacer()
         }
         
     }

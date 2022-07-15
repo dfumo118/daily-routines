@@ -12,7 +12,7 @@ struct EmptyRoutineListView: View {
         ZStack {
             Circle()
                 .fill(Color.accentColor)
-                .frame(width: UIScreen.main.bounds.width - 10)
+                .frame(width: UIScreen.main.bounds.width - 20)
             VStack {
                 Text("No routines!")
                     .font(.title)
