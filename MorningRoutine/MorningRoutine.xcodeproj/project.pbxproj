@@ -12,6 +12,7 @@
 		E9138544287E312A00AB04BB /* RoutineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9138543287E312A00AB04BB /* RoutineListViewModel.swift */; };
 		E913854628804D4400AB04BB /* EmptyRoutineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913854528804D4400AB04BB /* EmptyRoutineListView.swift */; };
 		E913854828804F7200AB04BB /* EmptyActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913854728804F7200AB04BB /* EmptyActionListView.swift */; };
+		E913854A2881970300AB04BB /* RoutineInteractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91385492881970300AB04BB /* RoutineInteractView.swift */; };
 		E92973FF28749CCA00A1EF0E /* MorningRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92973FE28749CCA00A1EF0E /* MorningRoutineApp.swift */; };
 		E929740328749CCB00A1EF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929740228749CCB00A1EF0E /* Assets.xcassets */; };
 		E929740628749CCB00A1EF0E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929740528749CCB00A1EF0E /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		E9138543287E312A00AB04BB /* RoutineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListViewModel.swift; sourceTree = "<group>"; };
 		E913854528804D4400AB04BB /* EmptyRoutineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoutineListView.swift; sourceTree = "<group>"; };
 		E913854728804F7200AB04BB /* EmptyActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActionListView.swift; sourceTree = "<group>"; };
+		E91385492881970300AB04BB /* RoutineInteractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInteractView.swift; sourceTree = "<group>"; };
 		E92973FB28749CCA00A1EF0E /* MorningRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorningRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92973FE28749CCA00A1EF0E /* MorningRoutineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRoutineApp.swift; sourceTree = "<group>"; };
 		E929740228749CCB00A1EF0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				E9138541287E02CD00AB04BB /* RoutineListRowView.swift */,
 				E913854528804D4400AB04BB /* EmptyRoutineListView.swift */,
 				E913854728804F7200AB04BB /* EmptyActionListView.swift */,
+				E91385492881970300AB04BB /* RoutineInteractView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				E9138542287E02CD00AB04BB /* RoutineListRowView.swift in Sources */,
 				E913854628804D4400AB04BB /* EmptyRoutineListView.swift in Sources */,
 				E929743A2878705800A1EF0E /* ActionListViewModel.swift in Sources */,
+				E913854A2881970300AB04BB /* RoutineInteractView.swift in Sources */,
 				E929742C28749FC200A1EF0E /* ActionListRowView.swift in Sources */,
 				E9138540287E01B000AB04BB /* RoutineListView.swift in Sources */,
 			);
