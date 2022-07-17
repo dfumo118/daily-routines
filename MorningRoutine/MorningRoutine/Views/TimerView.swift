@@ -12,12 +12,13 @@ struct TimerView: View {
     let timer = Timer.publish(every: 1,
                                       on: .main,
                                       in: .common).autoconnect()
-    @State var time : Int
+    @Binding var time : Int
     @State var timerRunning : Bool = true
     
     func secondsToTime(seconds: Int) -> String {
-        let minutes = seconds / 60
-        let sec = seconds % 60
+        let abs = abs(seconds)
+        let minutes = abs / 60
+        let sec = abs % 60
         return String(format:"%02i:%02i", minutes, sec)
     }
     
@@ -27,10 +28,11 @@ struct TimerView: View {
                 .padding()
                 .font(.system(size: 60))
                 .onReceive(timer) { value in
-                    if time > 0 && timerRunning {
+                    if timerRunning {
                         time -= 1
                     }
                 }
+                .foregroundColor(time <= 0 ? .white : Color.primary)
             Spacer()
         }
     }
@@ -39,6 +41,6 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(time: 120)
+        Text("timer")
     }
 }
