@@ -12,11 +12,20 @@ struct RoutineListRowView: View {
     @State var selected: Bool = false
     
     var body: some View {
-        HStack {
-            Text(routine.name)
-            Spacer()
-            Text(routine.timeAsString())
+        ZStack {
+            HStack {
+                Text(routine.name)
+                Spacer()
+                Text(routine.timeAsString())
+            }
+            NavigationLink(
+                destination: RoutineEditView(routine: routine),
+                label : {
+                    Text("")
+                }
+            )
         }
+        .buttonStyle(.plain)
         .padding(20)
         .background(Color(red: routine.color[0],
                           green: routine.color[1],
@@ -30,8 +39,8 @@ struct RoutineListRowView: View {
 
 struct RoutineListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        RoutineListRowView(routine: RoutineModel(name: "R2", actions:[ActionModel(title: "Action", time: 10)]))
-        
+        NavigationView {
+            RoutineListRowView(routine: RoutineModel(name: "R2", actions:[ActionModel(title: "Action", time: 10)]))
+        }
     }
 }
