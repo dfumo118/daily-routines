@@ -9,11 +9,23 @@ import SwiftUI
 
 struct RoutineEditView: View {
     
+    @Environment(\.editMode) private var editMode
+    
     @State var routine : RoutineModel
+    @State var fieldText : String = ""
     
     var body: some View {
         VStack {
-            if !routine.actions.isEmpty {
+            if editMode!.wrappedValue.isEditing == true {
+                TextField(routine.name, text: $fieldText)
+                    .padding()
+                    .onAppear {
+                        fieldText = ""
+                    }
+            }
+            if !routine.actions.isEmpty &&
+                editMode!.wrappedValue.isEditing == false
+            {
                 NavigationLink(
                     destination: RoutineInteractView(routine: routine),
                     label: { Text("Start") }
@@ -35,6 +47,9 @@ struct RoutineEditView: View {
         .padding()
         .navigationTitle(
             routine.name
+        )
+        .navigationBarItems(
+            leading: EditButton()
         )
     }
 }

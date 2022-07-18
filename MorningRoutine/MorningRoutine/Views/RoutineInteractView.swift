@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct RoutineInteractView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var tap : Bool = false
     @State var held : Bool = false
     @State var transferring : Bool = false
     @State var routine : RoutineModel
     @State var num : Int = 0
-    @State var time : Int
+    @State var time : Int = 0
     @State var holdTime : Bool = false
-    
-    init(routine: RoutineModel) {
-        self.routine = routine
-        self.time = routine.actions[0].time
-    }
-    
     
     let maxHeight = sqrt(
         UIScreen.main.bounds.height * UIScreen.main.bounds.height +
@@ -28,6 +25,7 @@ struct RoutineInteractView: View {
     )
     
     var body: some View {
+       
         ZStack {
             if time <= 0 {
                 Color.red
@@ -50,15 +48,15 @@ struct RoutineInteractView: View {
                                 .white : .white.opacity(0), lineWidth:2)
                             .background(Circle().fill(
                                 time <= 0 ?
-                                    Color.red
-                                    :
-                                held ?
-                                    Color.green.opacity(0.7) :
+                                Color.red
+                                :
+                                    held ?
+                                Color.green.opacity(0.7) :
                                     Color(red:routine.color[0],
                                           green: routine.color[1],
                                           blue: routine.color[2],
                                           opacity: 0.7)))
-                            
+                        
                     )
                     .onLongPressGesture (minimumDuration: 3,
                                          maximumDistance: .infinity) {
@@ -107,9 +105,32 @@ struct RoutineInteractView: View {
             TimerView(time: $time, hold: $holdTime)
                 .opacity(tap || transferring ? 0 : 1)
                 .animation(.spring(), value: transferring)
-                
+            VStack {
+                Spacer()
+                Text("Cancel")
+                    .padding()
+                    .padding(.horizontal)
+                    .foregroundColor(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.white, lineWidth: 2)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10).fill(.black.opacity(
+                                    time <= 0 ? 0 : 1
+                                ))
+                            )
+                    )
+                    .onTapGesture {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .opacity(tap || transferring ? 0 : 1)
+            }
+            
         }
         .toolbar(.hidden)
+        .onAppear {
+            time = routine.actions[0].time
+        }
     }
 }
 

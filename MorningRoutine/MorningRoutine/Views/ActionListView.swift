@@ -27,7 +27,6 @@ struct ActionListView: View {
                 }
                 .listStyle(.plain)
                 .navigationBarItems (
-                    leading: EditButton(),
                     trailing: NavigationLink(
                         destination: AddActionView(actionListViewModel:     actionListViewModel),
                         label: {
