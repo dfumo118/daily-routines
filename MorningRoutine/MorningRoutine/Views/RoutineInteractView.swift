@@ -14,6 +14,7 @@ struct RoutineInteractView: View {
     @State var routine : RoutineModel
     @State var num : Int = 0
     @State var time : Int
+    @State var holdTime : Bool = false
     
     init(routine: RoutineModel) {
         self.routine = routine
@@ -81,6 +82,7 @@ struct RoutineInteractView: View {
                         withAnimation(.easeInOut) {
                             held = true
                             transferring = true
+                            holdTime = true
                         }
                         DispatchQueue.main.asyncAfter(
                             deadline: .now()+1) {
@@ -90,25 +92,19 @@ struct RoutineInteractView: View {
                                 ) {
                                     held = false
                                     tap = false
+                                    holdTime = false
+                                    time = 10
                                 }
                                 
                             }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            if num < routine.actions.count - 1 {
-                                num = num + 1
-                                time = routine.actions[num].time
-                                transferring = false
-                            }
-                            else if num == routine.actions.count - 1 {
-                                num = 0
-                                time = routine.actions[num].time
-                                transferring = false
-
-                            }
+                            num = num < routine.actions.count - 1 ? num + 1 : 0
+                            time = routine.actions[num].time
+                            transferring = false
                         }
                     }
             }
-            TimerView(time: $time)
+            TimerView(time: $time, hold: $holdTime)
                 .opacity(tap || transferring ? 0 : 1)
                 .animation(.spring(), value: transferring)
                 

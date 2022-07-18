@@ -42,7 +42,8 @@ struct RoutineEditView: View {
 struct RoutineEditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RoutineEditView(routine: RoutineModel(name: "Routine 1", actions: [ActionModel(title: "One", time: 3)]))
+            RoutineEditView(routine: RoutineModel(name: "Routine 1", color: [0,0.5,0.5],
+                                                  actions: [ActionModel(title: "One", time: 3)]))
         }
     }
 }

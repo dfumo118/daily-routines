@@ -13,6 +13,7 @@ struct TimerView: View {
                                       on: .main,
                                       in: .common).autoconnect()
     @Binding var time : Int
+    @Binding var hold : Bool
     @State var timerRunning : Bool = true
     
     func secondsToTime(seconds: Int) -> String {
@@ -28,7 +29,7 @@ struct TimerView: View {
                 .padding()
                 .font(.system(size: 60))
                 .onReceive(timer) { value in
-                    if timerRunning {
+                    if timerRunning && !hold {
                         time -= 1
                     }
                 }
