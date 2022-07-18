@@ -14,6 +14,7 @@
 		E913854828804F7200AB04BB /* EmptyActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913854728804F7200AB04BB /* EmptyActionListView.swift */; };
 		E913854A2881970300AB04BB /* RoutineInteractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91385492881970300AB04BB /* RoutineInteractView.swift */; };
 		E913854C28819D7500AB04BB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913854B28819D7500AB04BB /* TimerView.swift */; };
+		E913854E2884BBEC00AB04BB /* RoutineEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913854D2884BBEC00AB04BB /* RoutineEditView.swift */; };
 		E92973FF28749CCA00A1EF0E /* MorningRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92973FE28749CCA00A1EF0E /* MorningRoutineApp.swift */; };
 		E929740328749CCB00A1EF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929740228749CCB00A1EF0E /* Assets.xcassets */; };
 		E929740628749CCB00A1EF0E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929740528749CCB00A1EF0E /* Preview Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		E913854728804F7200AB04BB /* EmptyActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActionListView.swift; sourceTree = "<group>"; };
 		E91385492881970300AB04BB /* RoutineInteractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInteractView.swift; sourceTree = "<group>"; };
 		E913854B28819D7500AB04BB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		E913854D2884BBEC00AB04BB /* RoutineEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineEditView.swift; sourceTree = "<group>"; };
 		E92973FB28749CCA00A1EF0E /* MorningRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorningRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92973FE28749CCA00A1EF0E /* MorningRoutineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRoutineApp.swift; sourceTree = "<group>"; };
 		E929740228749CCB00A1EF0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				E913854728804F7200AB04BB /* EmptyActionListView.swift */,
 				E91385492881970300AB04BB /* RoutineInteractView.swift */,
 				E913854B28819D7500AB04BB /* TimerView.swift */,
+				E913854D2884BBEC00AB04BB /* RoutineEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				E929742A28749D2E00A1EF0E /* ActionListView.swift in Sources */,
 				E929743128765D9300A1EF0E /* AddActionView.swift in Sources */,
 				E9138544287E312A00AB04BB /* RoutineListViewModel.swift in Sources */,
+				E913854E2884BBEC00AB04BB /* RoutineEditView.swift in Sources */,
 				E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */,
 				E929742F2876443800A1EF0E /* ActionModel.swift in Sources */,
 				E9138542287E02CD00AB04BB /* RoutineListRowView.swift in Sources */,

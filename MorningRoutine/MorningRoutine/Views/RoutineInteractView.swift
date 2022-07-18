@@ -111,20 +111,24 @@ struct RoutineInteractView: View {
             TimerView(time: $time)
                 .opacity(tap || transferring ? 0 : 1)
                 .animation(.spring(), value: transferring)
+                
         }
+        .toolbar(.hidden)
     }
 }
 
 struct RoutineInteractView_Previews: PreviewProvider {
     static var previews: some View {
-        RoutineInteractView(routine:
-                                RoutineModel(
-                                    name: "R1",
-                                    color: [0,0.5,0.5],
-                                    actions: [
-            ActionModel(title:"A1", time: 3),
-            ActionModel(title:"A2", time: 3),
-            ActionModel(title:"A3", time: 150),
-        ]))
+        NavigationView {
+            RoutineInteractView(routine:
+                                    RoutineModel(
+                                        name: "R1",
+                                        color: [0,0.5,0.5],
+                                        actions: [
+                                            ActionModel(title:"A1", time: 3),
+                                            ActionModel(title:"A2", time: 3),
+                                            ActionModel(title:"A3", time: 150),
+                                        ]))
+        }
     }
 }

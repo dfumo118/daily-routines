@@ -45,7 +45,7 @@ class RoutineListViewModel : ObservableObject {
         var b : CGFloat = 0
         var a : CGFloat = 0
         guard color.getRed(&r, green: &g, blue: &b, alpha: &a) else {return}
-        let newRoutine = RoutineModel(name: name, color:[r,g,b], actions: [])
+        let newRoutine = RoutineModel(name: name, color:[r,g,b], actions: [ActionModel(title: "action", time: 120)])
                 
         routines.append(newRoutine)
     }

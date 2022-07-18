@@ -26,13 +26,10 @@ struct ActionListView: View {
                     .onMove(perform: actionListViewModel.moveAction)
                 }
                 .listStyle(.plain)
-                .navigationTitle(
-                    actionListViewModel.routine.name
-                )
                 .navigationBarItems (
                     leading: EditButton(),
                     trailing: NavigationLink(
-                        destination: AddActionView(actionListViewModel: actionListViewModel),
+                        destination: AddActionView(actionListViewModel:     actionListViewModel),
                         label: {
                             Label("Add", systemImage: "plus")
                         }
