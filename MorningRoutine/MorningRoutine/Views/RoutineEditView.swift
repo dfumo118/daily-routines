@@ -9,14 +9,14 @@ import SwiftUI
 
 struct RoutineEditView: View {
     
-    @Environment(\.editMode) private var editMode
+    @Environment(\.editMode) var editMode
     
     @State var routine : RoutineModel
     @State var fieldText : String = ""
     
     var body: some View {
         VStack {
-            if editMode!.wrappedValue.isEditing == true {
+            if editMode?.wrappedValue.isEditing == true {
                 TextField(routine.name, text: $fieldText)
                     .padding()
                     .onAppear {
@@ -49,7 +49,7 @@ struct RoutineEditView: View {
             routine.name
         )
         .navigationBarItems(
-            leading: EditButton()
+            trailing: EditButton()
         )
     }
 }

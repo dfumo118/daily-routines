@@ -11,13 +11,16 @@ struct RoutineInteractView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @State var routine : RoutineModel
+    
     @State var tap : Bool = false
     @State var held : Bool = false
     @State var transferring : Bool = false
-    @State var routine : RoutineModel
+    @State var holdTime : Bool = false
+   
     @State var num : Int = 0
     @State var time : Int = 0
-    @State var holdTime : Bool = false
+    
     
     let maxHeight = sqrt(
         UIScreen.main.bounds.height * UIScreen.main.bounds.height +
@@ -30,7 +33,6 @@ struct RoutineInteractView: View {
             if time <= 0 {
                 Color.red
                     .ignoresSafeArea()
-                    .frame(width: .infinity, height: .infinity)
                     .animation(.linear, value: held)
             }
             VStack {
@@ -107,7 +109,7 @@ struct RoutineInteractView: View {
                 .animation(.spring(), value: transferring)
             VStack {
                 Spacer()
-                Text("Cancel")
+                Text("Back")
                     .padding()
                     .padding(.horizontal)
                     .foregroundColor(.white)

@@ -10,6 +10,7 @@ import SwiftUI
 struct ActionListView: View {
     
     @ObservedObject var actionListViewModel : ActionListViewModel
+    @Environment(\.editMode) var editMode
     
     init(routine: RoutineModel) {
         actionListViewModel = ActionListViewModel(routine: routine)
@@ -30,12 +31,12 @@ struct ActionListView: View {
                     trailing: NavigationLink(
                         destination: AddActionView(actionListViewModel:     actionListViewModel),
                         label: {
-                            Label("Add", systemImage: "plus")
+                            Text("Add Action")
                         }
                     )
                 )
                 
-                if actionListViewModel.routine.actions.isEmpty {
+                if actionListViewModel.routine.actions.isEmpty && editMode?.wrappedValue.isEditing == false {
                     EmptyActionListView(title: actionListViewModel.routine.name)
                         .padding(.bottom, 150)
                 }
