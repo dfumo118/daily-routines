@@ -31,6 +31,15 @@ class RoutineListViewModel : ObservableObject {
         ]
     }
     
+    func getRGB(color: UIColor) -> [Double] {
+        var r : CGFloat = 0
+        var g : CGFloat = 0
+        var b : CGFloat = 0
+        var a : CGFloat = 0
+        guard color.getRed(&r, green: &g, blue: &b, alpha: &a) else {return [0,0,0]}
+        return [r,g,b]
+    }
+    
     func deleteRoutine(indexSet: IndexSet) {
         routines.remove(atOffsets: indexSet)
     }
@@ -40,12 +49,8 @@ class RoutineListViewModel : ObservableObject {
     }
     
     func addRoutine(name: String, color: UIColor, actions: [ActionModel]) {
-        var r : CGFloat = 0
-        var g : CGFloat = 0
-        var b : CGFloat = 0
-        var a : CGFloat = 0
-        guard color.getRed(&r, green: &g, blue: &b, alpha: &a) else {return}
-        let newRoutine = RoutineModel(name: name, color:[r,g,b], actions: actions)
+        let newColor = getRGB(color: color)
+        let newRoutine = RoutineModel(name: name, actions: actions, color: newColor)
                 
         routines.append(newRoutine)
     }
@@ -54,11 +59,14 @@ class RoutineListViewModel : ObservableObject {
         routines[num].name = name
     }
     
-    func changeActions(num: Int, actions: [ActionModel]) {
-        routines[num].actions = actions
+    func changeColor(num: Int, color: UIColor) {
+        let newColor = getRGB(color: color)
+        print(newColor)
+        routines[num].color = newColor
     }
     
     func deleteAction(num: Int, indexSet: IndexSet) {
+        routines[num].time -= indexSet.map({routines[num].actions[$0].time}).reduce(0,+)
         routines[num].actions.remove(atOffsets: indexSet)
     }
     
@@ -69,5 +77,14 @@ class RoutineListViewModel : ObservableObject {
     func addAction(num: Int, title: String, time: Int) {
         let newAction = ActionModel(title: title, time: time)
         routines[num].actions.append(newAction)
+        routines[num].time += time
+    }
+    
+    func editAction(num: Int, action: ActionModel, time: Int) {
+        let actionNum = routines[num].actions.firstIndex{$0 == action}
+        if actionNum != nil {
+            routines[num].time += time - routines[num].actions[actionNum!].time
+            routines[num].actions[actionNum!].time = time
+        }
     }
 }

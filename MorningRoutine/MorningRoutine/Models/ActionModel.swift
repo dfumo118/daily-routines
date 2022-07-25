@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ActionModel : Identifiable, Codable {
+struct ActionModel : Identifiable, Codable, Equatable {
     let id : String = UUID().uuidString
     var title : String
     var time : Int

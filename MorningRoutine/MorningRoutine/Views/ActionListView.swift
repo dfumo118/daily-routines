@@ -10,16 +10,16 @@ import SwiftUI
 struct ActionListView: View {
     
     @Environment(\.editMode) var editMode
-    
     @EnvironmentObject var rLVM : RoutineListViewModel
-    @State var num : Int = 0
+    
+    @State var num : Int
     
     var body: some View {
         VStack {
             ZStack {
                 List {
                     ForEach(rLVM.routines[num].actions) {
-                        ActionListRowView(action: $0)
+                        ActionListRowView(num: num, action: $0)
                     }
                     .onDelete(perform: {
                         indexSet in
@@ -33,7 +33,7 @@ struct ActionListView: View {
                 .listStyle(.plain)
                 .navigationBarItems (
                     trailing: NavigationLink(
-                        destination: Text("add"),
+                        destination: AddActionView(num: num),
                         label: {
                             Text("Add Action")
                         }

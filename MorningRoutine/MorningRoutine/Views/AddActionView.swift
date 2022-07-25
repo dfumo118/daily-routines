@@ -9,7 +9,10 @@ import SwiftUI
 
 struct AddActionView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var actionListViewModel : ActionListViewModel
+    @EnvironmentObject var rLVM : RoutineListViewModel
+    
+    @State var num : Int
+    
     @State var titleText : String = ""
     @State var minutes : Int = 0
     @State var seconds : Int = 0
@@ -75,7 +78,8 @@ struct AddActionView: View {
     }
     
     func buttonPressed() {
-        actionListViewModel.addAction(
+        rLVM.addAction(
+            num: num,
             title: titleText,
             time: minutes * 60 + seconds
         )
@@ -86,7 +90,8 @@ struct AddActionView: View {
 struct AddActionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddActionView(actionListViewModel: ActionListViewModel(routine:RoutineModel(name:"hi", actions:[])))
+            AddActionView(num: 0)
         }
+        .environmentObject(RoutineListViewModel())
     }
 }

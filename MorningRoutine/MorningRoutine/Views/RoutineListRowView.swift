@@ -34,7 +34,7 @@ struct RoutineListRowView: View {
                           green: rLVM.routines[num].color[1],
                           blue: rLVM.routines[num].color[2],
                           opacity: 0.7))
-        .foregroundColor(rLVM.routines[num].color.reduce(0, +) < 255 ? .black : .white)
+        .foregroundColor(rLVM.routines[num].color.reduce(0, +) > 2 ? .black : .white)
         .cornerRadius(10)
         .padding(.horizontal)
     }
