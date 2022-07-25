@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct RoutineListRowView: View {
-    @State var routine: RoutineModel
+    @EnvironmentObject var rLVM : RoutineListViewModel
+    
+    @State var num: Int
     @State var selected: Bool = false
+   
     
     var body: some View {
         ZStack {
             HStack {
-                Text(routine.name)
+                Text(rLVM.routines[num].name)
                 Spacer()
-                Text(routine.timeAsString())
+                Text(rLVM.routines[num].timeAsString())
             }
             NavigationLink(
-                destination: RoutineEditView(routine: routine),
+                destination: RoutineEditView(num: num),
                 label : {
                     Text("")
                 }
@@ -27,11 +30,11 @@ struct RoutineListRowView: View {
         }
         .buttonStyle(.plain)
         .padding(20)
-        .background(Color(red: routine.color[0],
-                          green: routine.color[1],
-                          blue: routine.color[2],
+        .background(Color(red: rLVM.routines[num].color[0],
+                          green: rLVM.routines[num].color[1],
+                          blue: rLVM.routines[num].color[2],
                           opacity: 0.7))
-        .foregroundColor(routine.color.reduce(0, +) < 255 ? .black : .white)
+        .foregroundColor(rLVM.routines[num].color.reduce(0, +) < 255 ? .black : .white)
         .cornerRadius(10)
         .padding(.horizontal)
     }
@@ -40,7 +43,8 @@ struct RoutineListRowView: View {
 struct RoutineListRowView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RoutineListRowView(routine: RoutineModel(name: "R2", actions:[ActionModel(title: "Action", time: 10)]))
+            RoutineListRowView(num:0)
         }
+        .environmentObject(RoutineListViewModel())
     }
 }

@@ -10,55 +10,57 @@ import SwiftUI
 struct RoutineEditView: View {
     
     @Environment(\.editMode) var editMode
+    @EnvironmentObject var rLVM : RoutineListViewModel
     
-    @State var routine : RoutineModel
+    @State var num : Int
     @State var fieldText : String = ""
     
     var body: some View {
         VStack {
             if editMode?.wrappedValue.isEditing == true {
-                TextField(routine.name, text: $fieldText)
+                TextField(rLVM.routines[num].name, text: $fieldText)
                     .padding()
                     .onAppear {
-                        fieldText = ""
+                        fieldText = rLVM.routines[num].name
                     }
             }
-            if !routine.actions.isEmpty &&
+            if !rLVM.routines[num].actions.isEmpty &&
                 editMode!.wrappedValue.isEditing == false
             {
                 NavigationLink(
-                    destination: RoutineInteractView(routine: routine),
+                    destination: RoutineInteractView(routine: rLVM.routines[num]),
                     label: { Text("Start") }
                 )
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(Color(
-                    red: routine.color[0],
-                    green: routine.color[1],
-                    blue: routine.color[2],
+                    red: rLVM.routines[num].color[0],
+                    green: rLVM.routines[num].color[1],
+                    blue: rLVM.routines[num].color[2],
                     opacity: 0.7
                 ))
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 
             }
-            ActionListView(routine: routine)
+            ActionListView(num: num)
         }
         .padding()
         .navigationTitle(
-            routine.name
+            rLVM.routines[num].name
         )
-        .navigationBarItems(
-            trailing: EditButton()
-        )
+        .onChange(of: editMode!.wrappedValue, perform: { value in
+            if !value.isEditing {
+                rLVM.changeName(num: num, name: fieldText)
+            }
+        })
     }
 }
 
 struct RoutineEditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RoutineEditView(routine: RoutineModel(name: "Routine 1", color: [0,0.5,0.5],
-                                                  actions: [ActionModel(title: "One", time: 3)]))
-        }
+            RoutineEditView(num: 0)
+        }.environmentObject(RoutineListViewModel())
     }
 }

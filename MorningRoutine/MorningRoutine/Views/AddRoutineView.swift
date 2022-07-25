@@ -14,9 +14,10 @@ struct AddRoutineView: View {
     
     @State var titleText : String = ""
     @State var selectedColor : Color = .red
+    @State var newRoutine : RoutineModel = RoutineModel(name: "routine", actions: [])
     
     var body: some View {
-        ScrollView {
+        VStack {
             TextField("Title", text: $titleText)
                 .padding()
                 .padding(.horizontal)
@@ -24,8 +25,13 @@ struct AddRoutineView: View {
                     Color(UIColor.secondarySystemBackground)
                 )
                 .cornerRadius(10)
+        
             ColorPicker("Change Routine Color", selection: $selectedColor, supportsOpacity: false)
                 .padding()
+            
+            ActionListView(num: 0)
+                .scaledToFill()
+            
             Text("Save")
                 .padding()
                 .padding(.horizontal)
@@ -33,21 +39,26 @@ struct AddRoutineView: View {
                 .cornerRadius(10)
                 .foregroundColor(.white)
                 .onTapGesture {
-                    routineListViewModel.addRoutine(name: titleText, color: UIColor(selectedColor))
+                    routineListViewModel.addRoutine(
+                        name: titleText,
+                        color: UIColor(selectedColor),
+                        actions: newRoutine.actions
+                    )
                     presentationMode.wrappedValue.dismiss()
                 }
         }
         .padding()
+        .padding()
         .navigationTitle("Create Routine")
-        .navigationBarItems (
-            trailing: (
-                NavigationLink(
-                    destination: Text("Add"), //AddActionView(actionListViewModel: nil),
-                    label: {
-                        Text("Add Action")
-                    })
-            )
-        )
+//        .navigationBarItems (
+//            trailing: (
+//                NavigationLink(
+//                    destination:  AddActionView(actionListViewModel: ActionListViewModel(routine: newRoutine)),
+//                    label: {
+//                        Text("Add Action")
+//                    })
+//            )
+//        )
     }
 }
 

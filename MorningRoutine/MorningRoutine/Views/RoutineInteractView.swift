@@ -17,6 +17,7 @@ struct RoutineInteractView: View {
     @State var held : Bool = false
     @State var transferring : Bool = false
     @State var holdTime : Bool = false
+    @State var finished : Bool = false
    
     @State var num : Int = 0
     @State var time : Int = 0

@@ -9,47 +9,60 @@ import SwiftUI
 
 struct ActionListView: View {
     
-    @ObservedObject var actionListViewModel : ActionListViewModel
     @Environment(\.editMode) var editMode
     
-    init(routine: RoutineModel) {
-        actionListViewModel = ActionListViewModel(routine: routine)
-    }
+    @EnvironmentObject var rLVM : RoutineListViewModel
+    @State var num : Int = 0
     
     var body: some View {
         VStack {
             ZStack {
                 List {
-                    ForEach(actionListViewModel.routine.actions) {
+                    ForEach(rLVM.routines[num].actions) {
                         ActionListRowView(action: $0)
                     }
-                    .onDelete(perform: actionListViewModel.deleteAction)
-                    .onMove(perform: actionListViewModel.moveAction)
+                    .onDelete(perform: {
+                        indexSet in
+                        rLVM.deleteAction(num: num,
+                                          indexSet: indexSet)
+                    })
+                    .onMove(perform: { from, to in
+                        rLVM.moveAction(num: num, from: from, to: to)
+                    })
                 }
                 .listStyle(.plain)
                 .navigationBarItems (
                     trailing: NavigationLink(
-                        destination: AddActionView(actionListViewModel:     actionListViewModel),
+                        destination: Text("add"),
                         label: {
                             Text("Add Action")
                         }
                     )
                 )
+                .navigationBarItems (
+                    trailing: EditButton()
+                )
                 
-                if actionListViewModel.routine.actions.isEmpty && editMode?.wrappedValue.isEditing == false {
-                    EmptyActionListView(title: actionListViewModel.routine.name)
+                if rLVM.routines[num].actions.isEmpty && editMode?.wrappedValue.isEditing == false {
+                    EmptyActionListView(title: rLVM.routines[num].name)
                         .padding(.bottom, 150)
                 }
             }
         }
+        .onChange(of: editMode!.wrappedValue,
+                  perform: { value in
+//            if !value.isEditing {
+//                rLVM.changeActions(num: num, actions: actionListViewModel.routine.actions)
+//            }
+        })
     }
 }
 
 struct ActionListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ActionListView(routine: RoutineModel(name: "Routine 1", actions : [
-                    ]))
+            ActionListView(num: 0)
         }
+        .environmentObject(RoutineListViewModel())
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 class ActionListViewModel : ObservableObject {
+    
     @Published var routine : RoutineModel
     
     init(routine: RoutineModel) {
@@ -31,4 +32,5 @@ class ActionListViewModel : ObservableObject {
         routine.actions.remove(at: old)
         routine.actions.insert(new, at: old)
     }
+
 }
