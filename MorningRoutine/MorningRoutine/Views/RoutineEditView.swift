@@ -63,6 +63,10 @@ struct RoutineEditView: View {
         .navigationTitle(
             rLVM.routines[num].name
         )
+        .navigationBarItems (
+            trailing: EditButton()
+        )
+        
         .onChange(of: editMode!.wrappedValue, perform: { value in
             if !value.isEditing {
                 rLVM.changeName(num: num, name: fieldText)

@@ -39,9 +39,6 @@ struct ActionListView: View {
                         }
                     )
                 )
-                .navigationBarItems (
-                    trailing: EditButton()
-                )
                 
                 if rLVM.routines[num].actions.isEmpty && editMode?.wrappedValue.isEditing == false {
                     EmptyActionListView(title: rLVM.routines[num].name)

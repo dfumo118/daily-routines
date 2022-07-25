@@ -16,8 +16,8 @@ struct RoutineListView: View {
         VStack {
             ZStack {
                 List {
-                    ForEach(0..<routineListViewModel.routines.count) {
-                        RoutineListRowView(num: $0)
+                    ForEach(routineListViewModel.routines.indices, id: \.self) { index in
+                        RoutineListRowView(num: index)
                     }
                     .onDelete(perform: routineListViewModel.deleteRoutine)
                     .onMove(perform: routineListViewModel.moveRoutine)
