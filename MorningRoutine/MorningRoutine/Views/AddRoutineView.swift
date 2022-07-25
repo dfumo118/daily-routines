@@ -10,11 +10,10 @@ import SwiftUI
 struct AddRoutineView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var routineListViewModel : RoutineListViewModel
+    @EnvironmentObject var rLVM : RoutineListViewModel
     
     @State var titleText : String = ""
     @State var selectedColor : Color = .red
-    @State var newRoutine : RoutineModel = RoutineModel(name: "routine", actions: [])
     
     var body: some View {
         VStack {
@@ -28,37 +27,26 @@ struct AddRoutineView: View {
         
             ColorPicker("Change Routine Color", selection: $selectedColor, supportsOpacity: false)
                 .padding()
-            
-            ActionListView(num: 0)
-                .scaledToFill()
-            
+    
             Text("Save")
                 .padding()
                 .padding(.horizontal)
-                .background(Color.accentColor)
+                .background(selectedColor.opacity(0.7))
                 .cornerRadius(10)
-                .foregroundColor(.white)
+                .foregroundColor(rLVM.getRGB(color: UIColor(selectedColor)).reduce(0, +) > 2 ? .black : .white)
                 .onTapGesture {
-                    routineListViewModel.addRoutine(
+                    rLVM.addRoutine(
                         name: titleText,
                         color: UIColor(selectedColor),
-                        actions: newRoutine.actions
+                        actions: []
                     )
                     presentationMode.wrappedValue.dismiss()
                 }
+            Spacer()
         }
         .padding()
         .padding()
         .navigationTitle("Create Routine")
-//        .navigationBarItems (
-//            trailing: (
-//                NavigationLink(
-//                    destination:  AddActionView(actionListViewModel: ActionListViewModel(routine: newRoutine)),
-//                    label: {
-//                        Text("Add Action")
-//                    })
-//            )
-//        )
     }
 }
 
