@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct MorningRoutineApp: App {
+    
+    @StateObject var routineListViewModel : RoutineListViewModel = RoutineListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                RoutineListView()
+            }
+            .environmentObject(routineListViewModel)
         }
     }
 }
