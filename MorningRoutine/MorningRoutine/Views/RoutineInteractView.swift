@@ -31,13 +31,21 @@ struct RoutineInteractView: View {
     var body: some View {
        
         ZStack {
-            if time <= 0 {
+            if finished {
+                Color.green
+                    .ignoresSafeArea()
+                    .animation(.linear, value: finished)
+            }
+            else if time <= 0 {
                 Color.red
                     .ignoresSafeArea()
                     .animation(.linear, value: held)
             }
+            
             VStack {
-                Text(routine.actions[num].title)
+                Text(finished ?
+                     "\(routine.name) complete!"
+                     : routine.actions[num].title)
                     .font(.title)
                     .foregroundColor(Color.white)
                     .animation(.spring(), value: num)
@@ -47,14 +55,14 @@ struct RoutineInteractView: View {
                     )
                     .background(
                         Circle()
-                            .strokeBorder(time <= 0 ?
+                            .strokeBorder(finished || time <= 0 ?
                                 .white : .white.opacity(0), lineWidth:2)
                             .background(Circle().fill(
-                                time <= 0 ?
-                                Color.red
+                                held || finished ?
+                                Color.green
                                 :
-                                    held ?
-                                Color.green.opacity(0.7) :
+                                    time <= 0 ?
+                                Color.red :
                                     Color(red:routine.color[0],
                                           green: routine.color[1],
                                           blue: routine.color[2],
@@ -64,7 +72,7 @@ struct RoutineInteractView: View {
                     .onLongPressGesture (minimumDuration: 3,
                                          maximumDistance: .infinity) {
                         (isPressing) in
-                        if isPressing {
+                        if isPressing && !finished {
                             withAnimation(.easeInOut(duration:3)) {
                                 tap = true
                             }
@@ -99,14 +107,20 @@ struct RoutineInteractView: View {
                                 
                             }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            num = num < routine.actions.count - 1 ? num + 1 : 0
+                            if num < routine.actions.count - 1 {
+                                num += 1
+                            }
+                            else {
+                                finished = true
+                                holdTime = true
+                            }
                             time = routine.actions[num].time
                             transferring = false
                         }
                     }
             }
             TimerView(time: $time, hold: $holdTime)
-                .opacity(tap || transferring ? 0 : 1)
+                .opacity(finished || tap || transferring ? 0 : 1)
                 .animation(.spring(), value: transferring)
             VStack {
                 Spacer()
@@ -119,7 +133,7 @@ struct RoutineInteractView: View {
                             .stroke(.white, lineWidth: 2)
                             .background(
                                 RoundedRectangle(cornerRadius: 10).fill(.black.opacity(
-                                    time <= 0 ? 0 : 1
+                                    time <= 0 || finished ? 0 : 1
                                 ))
                             )
                     )
@@ -145,8 +159,8 @@ struct RoutineInteractView_Previews: PreviewProvider {
                                         name: "R1",
                                         actions: [
                                             ActionModel(title:"A1", time: 3),
-                                            ActionModel(title:"A2", time: 3),
-                                            ActionModel(title:"A3", time: 150),
+//                                            ActionModel(title:"A2", time: 3),
+//                                            ActionModel(title:"A3", time: 150),
                                         ],
                                         color: [0,0.5,0.5]))
         }
