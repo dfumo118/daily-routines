@@ -34,12 +34,10 @@ struct RoutineInteractView: View {
             if finished {
                 Color.green
                     .ignoresSafeArea()
-                    .animation(.linear, value: finished)
             }
             else if time <= 0 {
                 Color.red
                     .ignoresSafeArea()
-                    .animation(.linear, value: held)
             }
             
             VStack {
@@ -111,7 +109,9 @@ struct RoutineInteractView: View {
                                 num += 1
                             }
                             else {
-                                finished = true
+                                withAnimation(.easeInOut) {
+                                    finished = true
+                                }
                                 holdTime = true
                             }
                             time = routine.actions[num].time
