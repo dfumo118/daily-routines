@@ -47,6 +47,13 @@ struct RoutineInteractView: View {
                     .font(.title)
                     .foregroundColor(Color.white)
                     .animation(.spring(), value: num)
+                    .frame (
+                        width: 175,
+                        height: 175
+                    )
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(2)
                     .frame(
                         width: tap ? maxHeight : 200,
                         height: tap ? maxHeight : 200
