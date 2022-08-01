@@ -11,7 +11,7 @@ struct AddActionView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var rLVM : RoutineListViewModel
     
-    @State var num : Int
+    @State var routineId : String
     
     @State var titleText : String = ""
     @State var minutes : Int = 0
@@ -79,7 +79,7 @@ struct AddActionView: View {
     
     func buttonPressed() {
         rLVM.addAction(
-            num: num,
+            id: routineId,
             title: titleText,
             time: minutes * 60 + seconds
         )
@@ -90,7 +90,7 @@ struct AddActionView: View {
 struct AddActionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddActionView(num: 0)
+            //AddActionView(num: 0)
         }
         .environmentObject(RoutineListViewModel())
     }

@@ -12,56 +12,56 @@ struct RoutineEditView: View {
     @Environment(\.editMode) var editMode
     @EnvironmentObject var rLVM : RoutineListViewModel
     
-    @State var num : Int
+    @Binding var routine : RoutineModel
     @State var fieldText : String = ""
     @State var selectedColor : Color = .red
     
     var body: some View {
-        VStack {
+        VStack (alignment: .center, spacing:0){
             if editMode?.wrappedValue.isEditing == true {
                 VStack {
-                    TextField(rLVM.routines[num].name, text: $fieldText)
+                    TextField(routine.name, text: $fieldText)
                         .padding()
                         .onAppear {
-                            fieldText = rLVM.routines[num].name
+                            fieldText = routine.name
                         }
                     ColorPicker("Change Routine Color", selection: $selectedColor, supportsOpacity: false)
                         .padding()
                         .onAppear {
                             selectedColor = Color(
-                                red: rLVM.routines[num].color[0],
-                                green: rLVM.routines[num].color[1],
-                                blue: rLVM.routines[num].color[2]
+                                red: routine.color[0],
+                                green: routine.color[1],
+                                blue: routine.color[2]
                             )
                         }
                 }
             }
-            if !rLVM.routines[num].actions.isEmpty &&
+            if !routine.actions.isEmpty &&
                 editMode!.wrappedValue.isEditing == false
             {
                 NavigationLink(
-                    destination: RoutineInteractView(routine: rLVM.routines[num]),
+                    destination: RoutineInteractView(routine: routine),
                     label: {
-                        Text("Start - \(rLVM.routines[num].timeAsSentence())")
+                        Text("Start - \(routine.timeAsSentence())")
                     }
                 )
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(Color(
-                    red: rLVM.routines[num].color[0],
-                    green: rLVM.routines[num].color[1],
-                    blue: rLVM.routines[num].color[2],
+                    red: routine.color[0],
+                    green: routine.color[1],
+                    blue: routine.color[2],
                     opacity: 0.7
                 ))
-                .foregroundColor(rLVM.routines[num].color.reduce(0, +) > 2 ? .black : .white)
+                .foregroundColor(routine.color.reduce(0, +) > 2 ? .black : .white)
                 .cornerRadius(10)
                 
             }
-            ActionListView(num: num)
+            ActionListView(routine: $routine)
         }
         .padding()
         .navigationTitle(
-            rLVM.routines[num].name
+            routine.name
         )
         .navigationBarItems (
             trailing: EditButton()
@@ -69,8 +69,8 @@ struct RoutineEditView: View {
         
         .onChange(of: editMode!.wrappedValue, perform: { value in
             if !value.isEditing {
-                rLVM.changeName(num: num, name: fieldText)
-                rLVM.changeColor(num: num, color: UIColor(selectedColor))
+                rLVM.changeName(id: routine.id, name: fieldText)
+                rLVM.changeColor(id: routine.id, color: UIColor(selectedColor))
             }
         })
     }
@@ -79,7 +79,7 @@ struct RoutineEditView: View {
 struct RoutineEditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RoutineEditView(num: 0)
+//            RoutineEditView(routine: RoutineModel(name:"hi", actions:[]))
         }.environmentObject(RoutineListViewModel())
     }
 }

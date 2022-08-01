@@ -11,7 +11,7 @@ struct ActionListRowView: View {
     
     @EnvironmentObject var rLVM : RoutineListViewModel
   
-    @State var num : Int
+    @State var routineId : String
     @State var action : ActionModel
     @State var editing : Bool = false
     @State var titleText : String = ""
@@ -57,7 +57,7 @@ struct ActionListRowView: View {
                         .cornerRadius(10)
                         .onTapGesture {
                             withAnimation(.spring(response:0.2)) {
-                                rLVM.editAction(num: num, action: action,                     time: minutes*60 + seconds)
+                                rLVM.editAction(id: routineId, action: action,                     time: minutes*60 + seconds)
                                 action.time = minutes*60 + seconds
                                 editing = false
                                 
@@ -94,7 +94,8 @@ struct ActionListRowView: View {
 
 struct ActionListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ActionListRowView(num: 0, action: ActionModel(title:"Hi", time: 300))
-            .environmentObject(RoutineListViewModel())
+        //ActionListRowView(num: 0, action: ActionModel(title:"Hi", time: 300))
+            //.environmentObject(RoutineListViewModel())
+        EmptyView()
     }
 }
