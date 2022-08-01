@@ -54,7 +54,6 @@ class RoutineListViewModel : ObservableObject {
     
     func moveRoutine(from: IndexSet, to: Int) {
         routines.move(fromOffsets: from, toOffset: to)
-        print(routines.map({$0.name}))
     }
     
     func addRoutine(name: String, color: UIColor, actions: [ActionModel]) {
