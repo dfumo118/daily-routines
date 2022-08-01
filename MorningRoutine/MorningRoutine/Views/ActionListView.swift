@@ -12,38 +12,42 @@ struct ActionListView: View {
     @Environment(\.editMode) var editMode
     @EnvironmentObject var rLVM : RoutineListViewModel
     
-    @State var num : Int
+    @Binding var routine : RoutineModel
     
     var body: some View {
         VStack {
             ZStack {
                 List {
-                    ForEach(rLVM.routines[num].actions) {
-                        ActionListRowView(num: num, action: $0)
+                    ForEach(routine.actions) {
+                        ActionListRowView(routineId: routine.id, action: $0)
                     }
                     .onDelete(perform: {
                         indexSet in
-                        rLVM.deleteAction(num: num,
-                                          indexSet: indexSet)
+                        rLVM.deleteAction(
+                            id: routine.id,
+                            indexSet: indexSet)
                     })
                     .onMove(perform: { from, to in
-                        rLVM.moveAction(num: num, from: from, to: to)
+                        rLVM.moveAction(id: routine.id, from: from, to: to)
                     })
                 }
                 .listStyle(.plain)
                 .navigationBarItems (
                     trailing: NavigationLink(
-                        destination: AddActionView(num: num),
+                        destination: AddActionView(routineId: routine.id),
                         label: {
                             Text("Add Action")
                         }
                     )
                 )
                 
-                if rLVM.routines[num].actions.isEmpty && editMode?.wrappedValue.isEditing == false {
-                    EmptyActionListView(title: rLVM.routines[num].name)
+                if routine.actions.isEmpty && editMode?.wrappedValue.isEditing == false {
+                    EmptyActionListView(title: routine.name)
                         .padding(.bottom, 150)
                 }
+            }
+            .onChange(of: rLVM.routines[rLVM.findRoutine(id: routine.id)].actions.count) { value in
+                routine = rLVM.routines[rLVM.findRoutine(id: routine.id)]
             }
         }
     }
@@ -52,7 +56,7 @@ struct ActionListView: View {
 struct ActionListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ActionListView(num: 0)
+            //ActionListView(routine:)
         }
         .environmentObject(RoutineListViewModel())
     }

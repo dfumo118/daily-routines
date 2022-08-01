@@ -39,7 +39,9 @@ struct RoutineModel : Identifiable, Codable, Equatable {
     func timeAsSentence() -> String {
         let minutes = time / 60
         let seconds = time % 60
-        
+        if seconds == 0 {
+            return String(format: "%d min", minutes)
+        }
         return String(format: "%d min %02d sec", minutes, seconds)
     }
 }

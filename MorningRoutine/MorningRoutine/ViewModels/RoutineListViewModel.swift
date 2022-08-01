@@ -62,10 +62,6 @@ class RoutineListViewModel : ObservableObject {
     
     func changeName(routine: RoutineModel, name: String) {
         routines[findRoutine(id: routine.id)].name = name
-        print(name + "\n")
-        print(routines.map({$0.name}))
-        print("\n")
-        objectWillChange.send()
     }
     
     func changeColor(routine: RoutineModel, color: UIColor) {
@@ -73,22 +69,26 @@ class RoutineListViewModel : ObservableObject {
         routines[findRoutine(id: routine.id)].color = newColor
     }
     
-    func deleteAction(num: Int, indexSet: IndexSet) {
+    func deleteAction(id: String, indexSet: IndexSet) {
+        let num = findRoutine(id: id)
         routines[num].time -= indexSet.map({routines[num].actions[$0].time}).reduce(0,+)
         routines[num].actions.remove(atOffsets: indexSet)
     }
     
-    func moveAction(num: Int, from: IndexSet, to: Int) {
+    func moveAction(id: String, from: IndexSet, to: Int) {
+        let num = findRoutine(id: id)
         routines[num].actions.move(fromOffsets: from, toOffset: to)
     }
     
-    func addAction(num: Int, title: String, time: Int) {
+    func addAction(id: String, title: String, time: Int) {
+        let num = findRoutine(id: id)
         let newAction = ActionModel(title: title, time: time)
         routines[num].actions.append(newAction)
         routines[num].time += time
     }
     
-    func editAction(num: Int, action: ActionModel, time: Int) {
+    func editAction(id: String, action: ActionModel, time: Int) {
+        let num = findRoutine(id: id)
         let actionNum = routines[num].actions.firstIndex{$0 == action}
         if actionNum != nil {
             routines[num].time += time - routines[num].actions[actionNum!].time

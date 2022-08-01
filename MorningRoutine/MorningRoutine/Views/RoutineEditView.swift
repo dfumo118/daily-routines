@@ -17,7 +17,7 @@ struct RoutineEditView: View {
     @State var selectedColor : Color = .red
     
     var body: some View {
-        VStack {
+        VStack (alignment: .center, spacing:0){
             if editMode?.wrappedValue.isEditing == true {
                 VStack {
                     TextField(routine.name, text: $fieldText)
@@ -57,7 +57,7 @@ struct RoutineEditView: View {
                 .cornerRadius(10)
                 
             }
-            ActionListView(num: rLVM.findRoutine(id: routine.id))
+            ActionListView(routine: $routine)
         }
         .padding()
         .navigationTitle(
