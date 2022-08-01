@@ -46,12 +46,6 @@ struct ActionListView: View {
                 }
             }
         }
-        .onChange(of: editMode!.wrappedValue,
-                  perform: { value in
-//            if !value.isEditing {
-//                rLVM.changeActions(num: num, actions: actionListViewModel.routine.actions)
-//            }
-        })
     }
 }
 

@@ -40,12 +40,17 @@ class RoutineListViewModel : ObservableObject {
         return [r,g,b]
     }
     
+    func findRoutine(id: String) -> Int {
+        return routines.firstIndex{$0.id == id} ?? 0
+    }
+    
     func deleteRoutine(indexSet: IndexSet) {
         routines.remove(atOffsets: indexSet)
     }
     
     func moveRoutine(from: IndexSet, to: Int) {
         routines.move(fromOffsets: from, toOffset: to)
+        print(routines.map({$0.name}))
     }
     
     func addRoutine(name: String, color: UIColor, actions: [ActionModel]) {
@@ -55,14 +60,17 @@ class RoutineListViewModel : ObservableObject {
         routines.append(newRoutine)
     }
     
-    func changeName(num: Int, name: String) {
-        routines[num].name = name
+    func changeName(routine: RoutineModel, name: String) {
+        routines[findRoutine(id: routine.id)].name = name
+        print(name + "\n")
+        print(routines.map({$0.name}))
+        print("\n")
+        objectWillChange.send()
     }
     
-    func changeColor(num: Int, color: UIColor) {
+    func changeColor(routine: RoutineModel, color: UIColor) {
         let newColor = getRGB(color: color)
-        print(newColor)
-        routines[num].color = newColor
+        routines[findRoutine(id: routine.id)].color = newColor
     }
     
     func deleteAction(num: Int, indexSet: IndexSet) {

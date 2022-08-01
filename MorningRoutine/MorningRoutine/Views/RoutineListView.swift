@@ -9,25 +9,27 @@ import SwiftUI
 
 struct RoutineListView: View {
     
-    @EnvironmentObject var routineListViewModel : RoutineListViewModel
+    @EnvironmentObject var rLVM : RoutineListViewModel
     
     var body: some View {
        
         VStack {
             ZStack {
                 List {
-                    ForEach(routineListViewModel.routines.indices, id: \.self) { index in
-                        RoutineListRowView(num: index)
+                    ForEach(rLVM.routines.indices, id: \.self) {
+                        index in
+                        RoutineListRowView(routine: $rLVM.routines[index])
                     }
-                    .onDelete(perform: routineListViewModel.deleteRoutine)
-                    .onMove(perform: routineListViewModel.moveRoutine)
+                    .onDelete(perform: rLVM.deleteRoutine)
+                    .onMove(perform: rLVM.moveRoutine)
                 }
                 .listStyle(.plain)
                 .navigationTitle(
                     "Routines"
                 )
                 .navigationBarItems (
-                    leading: EditButton(),
+                    leading: rLVM.routines.isEmpty ?
+                    AnyView(EmptyView()) : AnyView(EditButton()),
                     trailing: NavigationLink(
                         destination: AddRoutineView(),
                         label: {
@@ -36,13 +38,13 @@ struct RoutineListView: View {
                     )
                 )
                 
-                if routineListViewModel.routines.isEmpty {
+                if rLVM.routines.isEmpty {
                     EmptyRoutineListView()
                         .padding(.bottom, 150)
                 }
             }
         }
-        
+        .animation(.spring(), value: rLVM.routines.isEmpty)
     }
 }
 
