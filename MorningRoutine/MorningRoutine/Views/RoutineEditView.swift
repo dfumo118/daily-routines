@@ -69,8 +69,8 @@ struct RoutineEditView: View {
         
         .onChange(of: editMode!.wrappedValue, perform: { value in
             if !value.isEditing {
-                rLVM.changeName(routine: routine, name: fieldText)
-                rLVM.changeColor(routine: routine, color: UIColor(selectedColor))
+                rLVM.changeName(id: routine.id, name: fieldText)
+                rLVM.changeColor(id: routine.id, color: UIColor(selectedColor))
             }
         })
     }

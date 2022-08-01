@@ -63,13 +63,13 @@ class RoutineListViewModel : ObservableObject {
         routines.append(newRoutine)
     }
     
-    func changeName(routine: RoutineModel, name: String) {
-        routines[findRoutine(id: routine.id)].name = name
+    func changeName(id: String, name: String) {
+        routines[findRoutine(id: id)].name = name
     }
     
-    func changeColor(routine: RoutineModel, color: UIColor) {
+    func changeColor(id: String, color: UIColor) {
         let newColor = getRGB(color: color)
-        routines[findRoutine(id: routine.id)].color = newColor
+        routines[findRoutine(id: id)].color = newColor
     }
     
     func deleteAction(id: String, indexSet: IndexSet) {
