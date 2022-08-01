@@ -19,7 +19,7 @@ struct AddActionView: View {
     
     var body: some View {
         VStack {
-            TextField("Title", text: $titleText)
+            TextField("title", text: $titleText)
                 .padding()
                 .padding(.horizontal)
                 .background(
@@ -28,7 +28,7 @@ struct AddActionView: View {
                 .cornerRadius(10)
             HStack {
                 VStack {
-                    Text("Minutes")
+                    Text("minutes")
                         .padding(.vertical, 2)
                     Picker(selection: $minutes, label: Text("Minutes")) {
                         ForEach(0..<60, id: \.self) {
@@ -44,7 +44,7 @@ struct AddActionView: View {
                     .cornerRadius(10)
                 }
                 VStack {
-                    Text("Seconds")
+                    Text("seconds")
                         .padding(.vertical, 2)
                     Picker(selection: $seconds, label: Text("Seconds")) {
                         ForEach(0..<60, id: \.self) {
@@ -61,7 +61,7 @@ struct AddActionView: View {
                 }
             }
             .padding(.vertical, 10)
-            Text("Add")
+            Text("add")
                 .padding()
                 .padding(.horizontal, 20)
                 .background(Color.blue)
@@ -74,13 +74,13 @@ struct AddActionView: View {
             Spacer()
         }
         .padding(20)
-        .navigationTitle("Add Action")
+        .navigationTitle("add action")
     }
     
     func buttonPressed() {
         rLVM.addAction(
             id: routineId,
-            title: titleText,
+            title: titleText.lowercased(),
             time: minutes * 60 + seconds
         )
         presentationMode.wrappedValue.dismiss()

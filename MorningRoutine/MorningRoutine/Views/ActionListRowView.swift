@@ -24,7 +24,7 @@ struct ActionListRowView: View {
                 VStack {
                     HStack {
                         TextField("\(action.title)", text: $titleText)
-                        Picker(selection: $minutes, label: Text("Minutes")) {
+                        Picker(selection: $minutes, label: Text("minutes")) {
                             ForEach(0..<60, id: \.self) {
                                 Text("\($0)")
                             }
@@ -36,7 +36,7 @@ struct ActionListRowView: View {
                             Color(UIColor.secondarySystemBackground)
                         )
                         .cornerRadius(10)
-                        Picker(selection: $seconds, label: Text("Seconds")) {
+                        Picker(selection: $seconds, label: Text("seconds")) {
                             ForEach(0..<60, id: \.self) {
                                 Text("\($0)")
                             }
@@ -49,7 +49,7 @@ struct ActionListRowView: View {
                         )
                         .cornerRadius(10)
                     }
-                    Text("Save")
+                    Text("save")
                         .padding()
                         .padding(.horizontal)
                         .foregroundColor(.white)

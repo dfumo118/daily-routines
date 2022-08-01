@@ -25,7 +25,7 @@ struct RoutineEditView: View {
                         .onAppear {
                             fieldText = routine.name
                         }
-                    ColorPicker("Change Routine Color", selection: $selectedColor, supportsOpacity: false)
+                    ColorPicker("change routine color", selection: $selectedColor, supportsOpacity: false)
                         .padding()
                         .onAppear {
                             selectedColor = Color(
@@ -42,7 +42,7 @@ struct RoutineEditView: View {
                 NavigationLink(
                     destination: RoutineInteractView(routine: routine),
                     label: {
-                        Text("Start - \(routine.timeAsSentence())")
+                        Text("start - \(routine.timeAsSentence())")
                     }
                 )
                 .padding()
@@ -65,6 +65,7 @@ struct RoutineEditView: View {
         )
         .navigationBarItems (
             trailing: EditButton()
+                .textCase(.lowercase)
         )
         
         .onChange(of: editMode!.wrappedValue, perform: { value in

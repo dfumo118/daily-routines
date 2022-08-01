@@ -25,15 +25,17 @@ struct RoutineListView: View {
                 }
                 .listStyle(.plain)
                 .navigationTitle(
-                    "Routines"
+                    "routines"
                 )
                 .navigationBarItems (
                     leading: rLVM.routines.isEmpty ?
-                    AnyView(EmptyView()) : AnyView(EditButton()),
+                    AnyView(EmptyView()) : AnyView(EditButton()
+                        .textCase(.lowercase)
+                                                  ),
                     trailing: NavigationLink(
                         destination: AddRoutineView(),
                         label: {
-                            Label("Add", systemImage: "plus")
+                            Label("add", systemImage: "plus")
                         }
                     )
                 )

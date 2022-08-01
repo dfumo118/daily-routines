@@ -16,10 +16,10 @@ struct EmptyActionListView: View {
                 .fill(Color(UIColor.secondarySystemBackground))
                 .frame(width:UIScreen.main.bounds.width - 20)
             VStack {
-                Text("No actions!")
+                Text("no actions!")
                     .font(.title)
                     .padding(.vertical, 5)
-                Text("Add actions to \(title) to start working!")
+                Text("add actions to \(title) to start working!")
                     .font(.body)
                     .multilineTextAlignment(.center)
             }

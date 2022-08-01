@@ -17,7 +17,7 @@ struct AddRoutineView: View {
     
     var body: some View {
         VStack {
-            TextField("Title", text: $titleText)
+            TextField("title", text: $titleText)
                 .padding()
                 .padding(.horizontal)
                 .background(
@@ -25,10 +25,10 @@ struct AddRoutineView: View {
                 )
                 .cornerRadius(10)
         
-            ColorPicker("Change Routine Color", selection: $selectedColor, supportsOpacity: false)
+            ColorPicker("change routine color", selection: $selectedColor, supportsOpacity: false)
                 .padding()
     
-            Text("Save")
+            Text("save")
                 .padding()
                 .padding(.horizontal)
                 .background(selectedColor.opacity(0.7))
@@ -36,7 +36,7 @@ struct AddRoutineView: View {
                 .foregroundColor(rLVM.getRGB(color: UIColor(selectedColor)).reduce(0, +) > 2 ? .black : .white)
                 .onTapGesture {
                     rLVM.addRoutine(
-                        name: titleText,
+                        name: titleText.lowercased(),
                         color: UIColor(selectedColor),
                         actions: []
                     )
@@ -46,7 +46,7 @@ struct AddRoutineView: View {
         }
         .padding()
         .padding()
-        .navigationTitle("Create Routine")
+        .navigationTitle("create routine.")
     }
 }
 

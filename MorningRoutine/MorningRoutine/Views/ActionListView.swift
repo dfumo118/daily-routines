@@ -36,7 +36,7 @@ struct ActionListView: View {
                     trailing: NavigationLink(
                         destination: AddActionView(routineId: routine.id),
                         label: {
-                            Text("Add Action")
+                            Text("add action")
                         }
                     )
                 )
