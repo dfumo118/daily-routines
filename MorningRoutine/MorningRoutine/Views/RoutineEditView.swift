@@ -12,7 +12,7 @@ struct RoutineEditView: View {
     @Environment(\.editMode) var editMode
     @EnvironmentObject var rLVM : RoutineListViewModel
     
-    @State var routine : RoutineModel
+    @Binding var routine : RoutineModel
     @State var fieldText : String = ""
     @State var selectedColor : Color = .red
     
@@ -71,7 +71,6 @@ struct RoutineEditView: View {
             if !value.isEditing {
                 rLVM.changeName(routine: routine, name: fieldText)
                 rLVM.changeColor(routine: routine, color: UIColor(selectedColor))
-                routine = rLVM.routines[rLVM.findRoutine(id: routine.id)]
             }
         })
     }
@@ -80,7 +79,7 @@ struct RoutineEditView: View {
 struct RoutineEditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RoutineEditView(routine: RoutineModel(name:"hi", actions:[]))
+//            RoutineEditView(routine: RoutineModel(name:"hi", actions:[]))
         }.environmentObject(RoutineListViewModel())
     }
 }

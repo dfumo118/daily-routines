@@ -20,7 +20,7 @@ struct RoutineListRowView: View {
                 Text(routine.timeAsString())
             }
             NavigationLink(
-                destination: RoutineEditView(routine: routine),
+                destination: RoutineEditView(routine: $routine),
                 label : {
                     Text("")
                 }

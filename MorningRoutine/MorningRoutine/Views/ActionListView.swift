@@ -46,9 +46,6 @@ struct ActionListView: View {
                         .padding(.bottom, 150)
                 }
             }
-            .onChange(of: rLVM.routines[rLVM.findRoutine(id: routine.id)].actions.count) { value in
-                routine = rLVM.routines[rLVM.findRoutine(id: routine.id)]
-            }
         }
     }
 }

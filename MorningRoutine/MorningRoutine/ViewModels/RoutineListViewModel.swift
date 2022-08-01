@@ -44,6 +44,10 @@ class RoutineListViewModel : ObservableObject {
         return routines.firstIndex{$0.id == id} ?? 0
     }
     
+    func getRoutineById(id: String) -> RoutineModel {
+        return routines[findRoutine(id: id)]
+    }
+    
     func deleteRoutine(indexSet: IndexSet) {
         routines.remove(atOffsets: indexSet)
     }
