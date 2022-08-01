@@ -9,26 +9,26 @@ import Foundation
 import SwiftUI
 
 class RoutineListViewModel : ObservableObject {
-    @Published var routines : [RoutineModel]
+    @Published var routines : [RoutineModel] {
+        didSet {
+            saveRoutines()
+        }
+    }
+    
+    let routinesKey = "routines_list"
     
     init() {
-        self.routines = [
-            RoutineModel(name: "Routine 1", actions: [
-                ActionModel(title: "Hi", time: 120),
-                ActionModel(title: "Hello", time: 150),
-                ActionModel(title: "Hey there", time: 100)
-            ]),
-            RoutineModel(name: "Routine 2", actions: [
-                ActionModel(title: "Hi", time: 120),
-                ActionModel(title: "Hello", time: 150),
-                ActionModel(title: "Hey there", time: 100)
-            ]),
-            RoutineModel(name: "Routine 3", actions: [
-                ActionModel(title: "Hi", time: 120),
-                ActionModel(title: "Hello", time: 150),
-                ActionModel(title: "Hey there", time: 100)
-            ])
-        ]
+        self.routines = []
+        getRoutines()
+    }
+    
+    func getRoutines() {
+        guard
+            let data = UserDefaults.standard.data(forKey: routinesKey),
+            let savedRoutines = try? JSONDecoder().decode([RoutineModel].self, from: data)
+        else { return }
+        
+        self.routines = savedRoutines
     }
     
     func getRGB(color: UIColor) -> [Double] {
@@ -96,6 +96,12 @@ class RoutineListViewModel : ObservableObject {
         if actionNum != nil {
             routines[num].time += time - routines[num].actions[actionNum!].time
             routines[num].actions[actionNum!].time = time
+        }
+    }
+    
+    func saveRoutines() {
+        if let encodedData = try? JSONEncoder().encode(routines) {
+            UserDefaults.standard.set(encodedData, forKey: routinesKey)
         }
     }
 }
