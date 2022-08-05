@@ -27,6 +27,7 @@
 		E929743128765D9300A1EF0E /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743028765D9300A1EF0E /* AddActionView.swift */; };
 		E9297435287867A900A1EF0E /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9297434287867A900A1EF0E /* AddRoutineView.swift */; };
 		E929743728786C0800A1EF0E /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929743628786C0800A1EF0E /* RoutineModel.swift */; };
+		E9405FCF2898351100C4C244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9405FCE2898351100C4C244 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		E929743028765D9300A1EF0E /* AddActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
 		E9297434287867A900A1EF0E /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
 		E929743628786C0800A1EF0E /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
+		E9405FCE2898351100C4C244 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E9405FD0289D557C00C4C244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 		E92973FD28749CCA00A1EF0E /* MorningRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				E9405FD0289D557C00C4C244 /* Info.plist */,
 				E92974382878703500A1EF0E /* ViewModels */,
 				E929742D2876442B00A1EF0E /* Models */,
 				E929742828749D1E00A1EF0E /* Views */,
@@ -169,6 +173,7 @@
 				E91385492881970300AB04BB /* RoutineInteractView.swift */,
 				E913854B28819D7500AB04BB /* TimerView.swift */,
 				E913854D2884BBEC00AB04BB /* RoutineEditView.swift */,
+				E9405FCE2898351100C4C244 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9405FCF2898351100C4C244 /* LaunchScreen.storyboard in Resources */,
 				E929740628749CCB00A1EF0E /* Preview Assets.xcassets in Resources */,
 				E929740328749CCB00A1EF0E /* Assets.xcassets in Resources */,
 			);
@@ -496,6 +502,8 @@
 				DEVELOPMENT_TEAM = 8XL2YP7VT6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MorningRoutine/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = routines.;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -525,6 +533,8 @@
 				DEVELOPMENT_TEAM = 8XL2YP7VT6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MorningRoutine/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = routines.;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

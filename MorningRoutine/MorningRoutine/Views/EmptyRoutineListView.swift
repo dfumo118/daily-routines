@@ -14,10 +14,10 @@ struct EmptyRoutineListView: View {
                 .fill(Color.accentColor)
                 .frame(width: UIScreen.main.bounds.width - 20)
             VStack {
-                Text("No routines!")
+                Text("no routines!")
                     .font(.title)
                     .padding(.vertical, 5)
-                Text("Create a new routine and make your day productive!")
+                Text("create a new routine and make your day productive!")
                     .font(.body)
                     .multilineTextAlignment(.center)
             }

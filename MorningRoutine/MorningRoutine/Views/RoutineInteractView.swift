@@ -131,7 +131,7 @@ struct RoutineInteractView: View {
                 .animation(.spring(), value: transferring)
             VStack {
                 Spacer()
-                Text("Back")
+                Text(finished ? "back" : "cancel")
                     .padding()
                     .padding(.horizontal)
                     .foregroundColor(.white)
